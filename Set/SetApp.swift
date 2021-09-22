@@ -10,8 +10,9 @@ import SwiftUI
 @main
 struct SetApp: App {
     var body: some Scene {
+        let game = ViewModel()
         WindowGroup {
-            ContentView()
+            SetGameView(game: game)
         }
     }
 }
