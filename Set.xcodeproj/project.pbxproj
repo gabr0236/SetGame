@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0BBCB37226FB733F004571B5 /* SetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCB37126FB733F004571B5 /* SetApp.swift */; };
-		0BBCB37426FB733F004571B5 /* SetGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCB37326FB733F004571B5 /* SetGameView.swift */; };
+		0BBCB37426FB733F004571B5 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCB37326FB733F004571B5 /* View.swift */; };
 		0BBCB37626FB7343004571B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BBCB37526FB7343004571B5 /* Assets.xcassets */; };
 		0BBCB37926FB7343004571B5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BBCB37826FB7343004571B5 /* Preview Assets.xcassets */; };
 		0BBCB38326FB74A8004571B5 /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCB38226FB74A8004571B5 /* AspectVGrid.swift */; };
@@ -19,7 +19,7 @@
 /* Begin PBXFileReference section */
 		0BBCB36E26FB733F004571B5 /* Set.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Set.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BBCB37126FB733F004571B5 /* SetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetApp.swift; sourceTree = "<group>"; };
-		0BBCB37326FB733F004571B5 /* SetGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGameView.swift; sourceTree = "<group>"; };
+		0BBCB37326FB733F004571B5 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		0BBCB37526FB7343004571B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0BBCB37826FB7343004571B5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0BBCB37A26FB7343004571B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -61,7 +61,7 @@
 				0BBCB38226FB74A8004571B5 /* AspectVGrid.swift */,
 				0BBCB38426FB75D4004571B5 /* Model.swift */,
 				0BBCB37126FB733F004571B5 /* SetApp.swift */,
-				0BBCB37326FB733F004571B5 /* SetGameView.swift */,
+				0BBCB37326FB733F004571B5 /* View.swift */,
 				0BBCB38A26FBA893004571B5 /* ViewModel.swift */,
 				0BBCB37526FB7343004571B5 /* Assets.xcassets */,
 				0BBCB37A26FB7343004571B5 /* Info.plist */,
@@ -148,7 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BBCB38B26FBA893004571B5 /* ViewModel.swift in Sources */,
-				0BBCB37426FB733F004571B5 /* SetGameView.swift in Sources */,
+				0BBCB37426FB733F004571B5 /* View.swift in Sources */,
 				0BBCB37226FB733F004571B5 /* SetApp.swift in Sources */,
 				0BBCB38526FB75D4004571B5 /* Model.swift in Sources */,
 				0BBCB38326FB74A8004571B5 /* AspectVGrid.swift in Sources */,

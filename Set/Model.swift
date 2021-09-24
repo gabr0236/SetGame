@@ -8,32 +8,78 @@
 import Foundation
 
 struct Model {
-    private(set) var cards: Array<Card> = []
-    
+    private(set) var deckOfCards: Array<Card> = []
+    private(set) var shownCards: Array<Card> = []
     private(set) var player: Player
-
     
     mutating func choose(_ card: Card) {
     }
     
-    //init(numberOfPairsOfCards: Int, createCardContent: (Int) -> CardContent) {
-    //    cards = Array<Card>()
-    //    // add number of pairs of cards x 2 cards to card array
-    //    for pairIndex in 0..<numberOfPairsOfCards {
-    //        let content: CardContent = createCardContent(pairIndex)
-    //        cards.append(Card(content: content, id: pairIndex*2))
-    //        cards.append(Card(content: content, id: pairIndex*2+1))
-    //    }
-    //    cards.shuffle()
-    //}
-
+    init() {
+        self.player = Player(name: "testplayer")
+        deckOfCards = Array<Card>()
+        createCards()
+        showStartingCards()
+        deckOfCards.shuffle()
+    }
+    
+    mutating func createCards() {
+        var j = 0
+        for i in 0...2 {
+            for shape in Shape.allCases {
+                for color in Color.allCases {
+                    for gradient in Gradient.allCases {
+                        deckOfCards.append(
+                            Card(shape: shape,
+                                 color: color,
+                                 gradient: gradient,
+                                 numberOfShapes: i,
+                                 id: j
+                            ))
+                        j+=1
+                    }
+                }
+            }
+        }
+    }
+    
+    mutating func showStartingCards() {
+        for _ in 0...12 {
+            shownCards.append(deckOfCards.removeFirst())
+        }
+    }
+    
+    mutating func showThreeMoreCardsFromDeck()  {
+        if deckOfCards.count >= 3 {
+            for _ in 0...2 {
+                shownCards.append(deckOfCards.removeFirst())
+            }
+        } else {
+            for _ in deckOfCards {
+                shownCards.append(deckOfCards.removeFirst())
+            }
+        }
+    }
+    
     struct Card: Identifiable {
-        let shape: String
-        let color: String
-        let gradient: String
+        let shape: Shape
+        let color: Color
+        let gradient: Gradient
         let numberOfShapes: Int
-        let isClaimed = false
+        let isMatched = false
         let id: Int
+    }
+    
+    enum Shape: CaseIterable {
+        case diamond, roundedRectangle, rectangle
+    }
+    
+    enum Color: CaseIterable {
+        case green, orange, pink
+    }
+    
+    enum Gradient: Double, CaseIterable {
+        case fill, light, none
     }
 }
 
