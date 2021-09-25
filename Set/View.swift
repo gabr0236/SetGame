@@ -25,12 +25,10 @@ struct SetGameView: View {
                     CardView(card: card)
                         .padding(4)
                         .onTapGesture {
-                            //TODO: inplement
-                            //game.choose(card)
+                            game.choose(card)
                         }
                 }
-            }
-            .foregroundColor(.blue)
+            }.foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
             .padding(.horizontal)
             
             Button("show 3 more cards"){
@@ -49,13 +47,13 @@ struct CardView: View {
                 let shape = RoundedRectangle(cornerRadius: 10)
                 if !card.isMatched {
                     shape.fill().foregroundColor(.white)
-                    shape.strokeBorder(lineWidth: 4)
-                    //Text(card.content).font(font(in: geometry.size))
+                    shape.strokeBorder(lineWidth: 4).foregroundColor(card.isSelected ? .red : .blue)
                 } else if card.isMatched {
                     shape.opacity(0)
                 } else {
                     shape.fill()
                 }
+               
             }
         }
     }

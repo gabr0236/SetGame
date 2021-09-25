@@ -13,6 +13,11 @@ struct Model {
     private(set) var player: Player
     
     mutating func choose(_ card: Card) {
+        if let chosenIndex = shownCards.firstIndex(where: { $0.id == card.id}),
+           !shownCards[chosenIndex].isMatched
+        {
+            shownCards[chosenIndex].isSelected = shownCards[chosenIndex].isSelected ? false : true;
+        }
     }
     
     init() {
@@ -62,11 +67,13 @@ struct Model {
     }
     
     struct Card: Identifiable {
-        let shape: Shape
+        //lav til constant
+        var shape: Shape
         let color: Color
         let gradient: Gradient
         let numberOfShapes: Int
-        let isMatched = false
+        var isMatched = false
+        var isSelected = false
         let id: Int
     }
     

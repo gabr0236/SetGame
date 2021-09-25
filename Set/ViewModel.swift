@@ -23,6 +23,10 @@ class ViewModel: ObservableObject {
         return model.shownCards
     }
     
+    func choose(_ card: Model.Card) {
+        model.choose(card)
+    }
+    
     func showCards() {
         model.showThreeMoreCardsFromDeck()
     }
