@@ -32,12 +32,12 @@ struct Model {
         var j = 0
         for i in 0...2 {
             for shape in Shape.allCases {
-                for color in Color.allCases {
-                    for gradient in Gradient.allCases {
+                for color in SetColor.allCases {
+                    for gradient in Fill.allCases {
                         deckOfCards.append(
                             Card(shape: shape,
                                  color: color,
-                                 gradient: gradient,
+                                 fill: gradient,
                                  numberOfShapes: i,
                                  id: j
                             ))
@@ -68,9 +68,9 @@ struct Model {
     
     struct Card: Identifiable {
         //lav til constant
-        var shape: Shape
-        let color: Color
-        let gradient: Gradient
+        let shape: Shape
+        let color: SetColor
+        let fill: Fill
         let numberOfShapes: Int
         var isMatched = false
         var isSelected = false
@@ -78,15 +78,15 @@ struct Model {
     }
     
     enum Shape: CaseIterable {
-        case diamond, roundedRectangle, rectangle
+        case diamond, roundedRectangle, squiglle
     }
     
-    enum Color: CaseIterable {
+    enum SetColor: CaseIterable {
         case green, orange, pink
     }
     
-    enum Gradient: Double, CaseIterable {
-        case fill, light, none
+    enum Fill: CaseIterable {
+        case fill, stripes, none
     }
 }
 

@@ -1,0 +1,74 @@
+//
+//  CardView.swift
+//  Set
+//
+//  Created by Gabriel Haugbøl on 25/09/2021.
+//
+
+import SwiftUI
+
+struct CardView: View {
+    let card: Model.Card
+    
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack{
+                let shape = RoundedRectangle(cornerRadius: 10)
+                if !card.isMatched {
+                    shape.fill().foregroundColor(.white)
+                    shape.strokeBorder(lineWidth: 4).foregroundColor(card.isSelected ? .red : .blue)
+                } else if card.isMatched {
+                    shape.opacity(0)
+                } else {
+                    shape.fill()
+                }
+                VStack {
+                    Spacer()
+                    ForEach(0..<card.numberOfShapes) { index in
+                        cardShape().frame(height: geometry.size.height/4)
+                    }
+                    Spacer()
+                }.padding()
+                .foregroundColor(setColor())
+                .aspectRatio(CGFloat(6.0/8.0),contentMode: .fit)
+            }
+        }
+    }
+    
+    @ViewBuilder private func cardShape() -> some View {
+        switch card.shape {
+        case .squiglle:          shapeFill(shape: Squiggle())
+        case .roundedRectangle:  shapeFill(shape: Capsule())
+        case .diamond:           shapeFill(shape: Diamond())
+        }
+    }
+    
+    private func setColor() -> Color {
+        switch card.color {
+        case .pink: return Color.pink
+        case .orange: return Color.orange
+        case .green: return Color.green
+        }
+    }
+    
+    @ViewBuilder private func shapeFill<setShape>(shape: setShape) -> some View
+    where setShape: Shape {
+        switch card.fill {
+        case .fill:       shape.fillAndBorder()
+        case .stripes:    shape.stripe()
+        case .none:       shape.stroke(lineWidth: 4)
+        }
+    }
+}
+
+struct SetCardView_Previews: PreviewProvider {
+    static var previews: some View {
+        let card = Model.Card(shape: .squiglle, color: .pink, fill: .none, numberOfShapes: 3, id: 1)
+            CardView(card: card)
+            .overlay(
+                RoundedRectangle( cornerRadius: 10)
+                    .stroke(Color.blue, lineWidth: 2)
+            )
+            .padding()
+    }
+}

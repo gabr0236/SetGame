@@ -38,26 +38,18 @@ struct SetGameView: View {
     }
 }
 
-struct CardView: View {
-    let card: Model.Card
-    
-    var body: some View {
-        GeometryReader { geometry in
-            ZStack{
-                let shape = RoundedRectangle(cornerRadius: 10)
-                if !card.isMatched {
-                    shape.fill().foregroundColor(.white)
-                    shape.strokeBorder(lineWidth: 4).foregroundColor(card.isSelected ? .red : .blue)
-                } else if card.isMatched {
-                    shape.opacity(0)
-                } else {
-                    shape.fill()
-                }
-               
-            }
-        }
-    }
-}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

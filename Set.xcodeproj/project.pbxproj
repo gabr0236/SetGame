@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0B4B3A7126FF16D500F2138B /* Diamond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B3A7026FF16D500F2138B /* Diamond.swift */; };
+		0B4B3A7426FF3C3500F2138B /* Squiggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B3A7326FF3C3500F2138B /* Squiggle.swift */; };
+		0B4B3A7626FF56BF00F2138B /* ShapeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B3A7526FF56BF00F2138B /* ShapeExtensions.swift */; };
+		0B4B3A7826FF574600F2138B /* StripedRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B3A7726FF574600F2138B /* StripedRect.swift */; };
+		0B4B3A7E26FF96F800F2138B /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B3A7D26FF96F800F2138B /* CardView.swift */; };
 		0BBCB37226FB733F004571B5 /* SetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCB37126FB733F004571B5 /* SetApp.swift */; };
 		0BBCB37426FB733F004571B5 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCB37326FB733F004571B5 /* View.swift */; };
 		0BBCB37626FB7343004571B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BBCB37526FB7343004571B5 /* Assets.xcassets */; };
@@ -19,6 +23,10 @@
 
 /* Begin PBXFileReference section */
 		0B4B3A7026FF16D500F2138B /* Diamond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diamond.swift; sourceTree = "<group>"; };
+		0B4B3A7326FF3C3500F2138B /* Squiggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Squiggle.swift; sourceTree = "<group>"; };
+		0B4B3A7526FF56BF00F2138B /* ShapeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeExtensions.swift; sourceTree = "<group>"; };
+		0B4B3A7726FF574600F2138B /* StripedRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripedRect.swift; sourceTree = "<group>"; };
+		0B4B3A7D26FF96F800F2138B /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		0BBCB36E26FB733F004571B5 /* Set.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Set.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BBCB37126FB733F004571B5 /* SetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetApp.swift; sourceTree = "<group>"; };
 		0BBCB37326FB733F004571B5 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
@@ -41,6 +49,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B4B3A7226FF3AE600F2138B /* Shape */ = {
+			isa = PBXGroup;
+			children = (
+				0B4B3A7026FF16D500F2138B /* Diamond.swift */,
+				0B4B3A7326FF3C3500F2138B /* Squiggle.swift */,
+				0B4B3A7526FF56BF00F2138B /* ShapeExtensions.swift */,
+				0B4B3A7726FF574600F2138B /* StripedRect.swift */,
+			);
+			path = Shape;
+			sourceTree = "<group>";
+		};
+		0B4B3A7926FF57CF00F2138B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0BBCB37326FB733F004571B5 /* View.swift */,
+				0B4B3A7D26FF96F800F2138B /* CardView.swift */,
+				0B4B3A7226FF3AE600F2138B /* Shape */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0B4B3A7A26FF57D600F2138B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0BBCB38A26FBA893004571B5 /* ViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0B4B3A7B26FF57DE00F2138B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0BBCB38426FB75D4004571B5 /* Model.swift */,
+				0B4B3A7C26FF58BC00F2138B /* Helper */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0B4B3A7C26FF58BC00F2138B /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				0BBCB38226FB74A8004571B5 /* AspectVGrid.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		0BBCB36526FB733F004571B5 = {
 			isa = PBXGroup;
 			children = (
@@ -60,15 +114,13 @@
 		0BBCB37026FB733F004571B5 /* Set */ = {
 			isa = PBXGroup;
 			children = (
-				0BBCB38226FB74A8004571B5 /* AspectVGrid.swift */,
-				0BBCB38426FB75D4004571B5 /* Model.swift */,
 				0BBCB37126FB733F004571B5 /* SetApp.swift */,
-				0BBCB37326FB733F004571B5 /* View.swift */,
-				0BBCB38A26FBA893004571B5 /* ViewModel.swift */,
+				0B4B3A7B26FF57DE00F2138B /* Model */,
+				0B4B3A7926FF57CF00F2138B /* View */,
+				0B4B3A7A26FF57D600F2138B /* ViewModel */,
 				0BBCB37526FB7343004571B5 /* Assets.xcassets */,
 				0BBCB37A26FB7343004571B5 /* Info.plist */,
 				0BBCB37726FB7343004571B5 /* Preview Content */,
-				0B4B3A7026FF16D500F2138B /* Diamond.swift */,
 			);
 			path = Set;
 			sourceTree = "<group>";
@@ -151,7 +203,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B4B3A7126FF16D500F2138B /* Diamond.swift in Sources */,
+				0B4B3A7626FF56BF00F2138B /* ShapeExtensions.swift in Sources */,
+				0B4B3A7426FF3C3500F2138B /* Squiggle.swift in Sources */,
 				0BBCB38B26FBA893004571B5 /* ViewModel.swift in Sources */,
+				0B4B3A7E26FF96F800F2138B /* CardView.swift in Sources */,
+				0B4B3A7826FF574600F2138B /* StripedRect.swift in Sources */,
 				0BBCB37426FB733F004571B5 /* View.swift in Sources */,
 				0BBCB37226FB733F004571B5 /* SetApp.swift in Sources */,
 				0BBCB38526FB75D4004571B5 /* Model.swift in Sources */,
