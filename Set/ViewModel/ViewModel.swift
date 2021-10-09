@@ -12,13 +12,9 @@ class ViewModel: ObservableObject {
     
     
     init() {
-        player = Player(name: "TestPlayer")
         model = Model()
     }
-    private var player: Player
-    
-    var score: Int { player.score }
-    
+        
     var cards: Array<Model.Card> {
         return model.shownCards
     }
@@ -27,7 +23,7 @@ class ViewModel: ObservableObject {
         model.choose(card)
     }
     
-    func showCards() {
+    func showThreeMoreCardsFromDeck() {
         model.showThreeMoreCardsFromDeck()
     }
 }

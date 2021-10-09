@@ -16,7 +16,7 @@ struct SetGameView: View {
                 Text("Set Game")
                     .font(.largeTitle)
             }
-            Text("Score: \(game.score)")
+            //Text("Score: \(game.score)")
             
             AspectVGrid(items: game.cards, aspectRatio: 2/3) { card in
                 if card.isMatched {
@@ -32,7 +32,7 @@ struct SetGameView: View {
             .padding(.horizontal)
             
             Button("show 3 more cards"){
-                game.showCards()
+                game.showThreeMoreCardsFromDeck()
             }
         }
     }

@@ -82,7 +82,6 @@
 			isa = PBXGroup;
 			children = (
 				0BBCB38426FB75D4004571B5 /* Model.swift */,
-				0B4B3A7C26FF58BC00F2138B /* Helper */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -115,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				0BBCB37126FB733F004571B5 /* SetApp.swift */,
+				0B4B3A7C26FF58BC00F2138B /* Helper */,
 				0B4B3A7B26FF57DE00F2138B /* Model */,
 				0B4B3A7926FF57CF00F2138B /* View */,
 				0B4B3A7A26FF57D600F2138B /* ViewModel */,

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StripedRect: Shape {
-    var spacing: CGFloat = 3.5
+    var spacing: CGFloat = 3.2
     
     func path(in rect: CGRect) -> Path {
         let start = CGPoint(x: rect.minX, y: rect.minY)
