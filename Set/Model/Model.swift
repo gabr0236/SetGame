@@ -22,38 +22,12 @@ struct Model {
             let potentialMatchingCards = shownCards.filter({$0.isSelected == true})
             if  potentialMatchingCards.count == 3 {
                 if (isMatch(cards: potentialMatchingCards)) {
-                    if shownCards.count<=13 {
-                        for index in shownCards.indices {
-                            if shownCards[index].isSelected {
-                                shownCards[index].isSelected.toggle()
-                                shownCards[index].isMatched.toggle()
-                                let matchedCard = shownCards[index]
-                                let replacementCard = deckOfCards.randomElement()
-                                shownCards[index] = replacementCard!
-                                matchedCards.append(matchedCard)
-                            }
-                        }
-                    } else {
-                        for index in shownCards.indices {
-                            if shownCards[index].isSelected {
-                                shownCards[index].isSelected.toggle()
-                                shownCards[index].isMatched.toggle()
-                            }
-                        }
-                        for card in potentialMatchingCards {
-                            shownCards.remove(card)
-                            matchedCards.append(card)
-                        }
-
-                    }
-                } else {
-                    for index in shownCards.indices {
-                        if shownCards[index].isSelected {
-                            shownCards[index].isSelected.toggle()
-                        }
-                    }
+                    shownCards.indices.filter { shownCards[$0].isSelected == true }
+                        .forEach { shownCards[$0].isMatched = true }
                 }
-                
+            } else {
+                shownCards.indices.filter { shownCards[$0].isSelected == true }
+                    .forEach { shownCards[$0].isSelected = false }
             }
         }
     }
@@ -128,7 +102,7 @@ struct Model {
     
     
     mutating func showStartingCards() {
-        for _ in 0...12 {
+        for _ in 0...40 {
             shownCards.append(deckOfCards.removeFirst())
         }
     }
