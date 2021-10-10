@@ -28,7 +28,7 @@ struct SetGameView: View {
                             game.choose(card)
                         }
                 }
-            }.foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+            }.foregroundColor(.blue)
             .padding(.horizontal)
             
             Button("show 3 more cards"){

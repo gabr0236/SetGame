@@ -61,7 +61,7 @@ struct CardView: View {
 
 struct SetCardView_Previews: PreviewProvider {
     static var previews: some View {
-        let card = Model.Card(shape: .diamond, color: .pink, fill: .none, numberOfShapes: 3, id: 1)
+        let card = Model.Card(shape: .diamond, color: .pink, fill: .none, numberOfShapes: 3, isSelected: true, id: 1)
         CardView(card: card)
             .overlay(
                 RoundedRectangle( cornerRadius: 10)
