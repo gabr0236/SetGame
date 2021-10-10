@@ -24,11 +24,11 @@ struct Model {
                 if (isMatch(cards: potentialMatchingCards)) {
                     shownCards.indices.filter { shownCards[$0].isSelected == true }
                         .forEach { shownCards[$0].isMatched = true }
-                }
-            } else {
+                } else {
                 shownCards.indices.filter { shownCards[$0].isSelected == true }
                     .forEach { shownCards[$0].isSelected = false }
             }
+        }
         }
     }
     
