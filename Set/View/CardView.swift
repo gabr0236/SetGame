@@ -50,6 +50,7 @@ struct CardView: View {
     }
     
     @ViewBuilder private func shapeFill<setShape>(shape: setShape) -> some View
+    //TODO: se løsning, brug rawvalues for cleanness
     where setShape: Shape {
         switch card.fill {
         case .fill:       shape.fillAndBorder()

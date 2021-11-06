@@ -12,6 +12,7 @@
 		0B4B3A7626FF56BF00F2138B /* ShapeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B3A7526FF56BF00F2138B /* ShapeExtensions.swift */; };
 		0B4B3A7826FF574600F2138B /* StripedRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B3A7726FF574600F2138B /* StripedRect.swift */; };
 		0B4B3A7E26FF96F800F2138B /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B3A7D26FF96F800F2138B /* CardView.swift */; };
+		0BA4D1C227360B41002A54BE /* SetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA4D1B927360264002A54BE /* SetTests.swift */; };
 		0BBCB37226FB733F004571B5 /* SetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCB37126FB733F004571B5 /* SetApp.swift */; };
 		0BBCB37426FB733F004571B5 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCB37326FB733F004571B5 /* View.swift */; };
 		0BBCB37626FB7343004571B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BBCB37526FB7343004571B5 /* Assets.xcassets */; };
@@ -21,12 +22,25 @@
 		0BBCB38B26FBA893004571B5 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCB38A26FBA893004571B5 /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		0BA4D1BC27360264002A54BE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0BBCB36626FB733F004571B5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0BBCB36D26FB733F004571B5;
+			remoteInfo = Set;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		0B4B3A7026FF16D500F2138B /* Diamond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diamond.swift; sourceTree = "<group>"; };
 		0B4B3A7326FF3C3500F2138B /* Squiggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Squiggle.swift; sourceTree = "<group>"; };
 		0B4B3A7526FF56BF00F2138B /* ShapeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeExtensions.swift; sourceTree = "<group>"; };
 		0B4B3A7726FF574600F2138B /* StripedRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripedRect.swift; sourceTree = "<group>"; };
 		0B4B3A7D26FF96F800F2138B /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		0BA4D1B727360263002A54BE /* SetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0BA4D1B927360264002A54BE /* SetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTests.swift; sourceTree = "<group>"; usesTabs = 0; };
+		0BA4D1BB27360264002A54BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0BBCB36E26FB733F004571B5 /* Set.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Set.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BBCB37126FB733F004571B5 /* SetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetApp.swift; sourceTree = "<group>"; };
 		0BBCB37326FB733F004571B5 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
@@ -39,6 +53,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0BA4D1B427360263002A54BE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0BBCB36B26FB733F004571B5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -94,10 +115,20 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		0BA4D1B827360264002A54BE /* SetTests */ = {
+			isa = PBXGroup;
+			children = (
+				0BA4D1B927360264002A54BE /* SetTests.swift */,
+				0BA4D1BB27360264002A54BE /* Info.plist */,
+			);
+			path = SetTests;
+			sourceTree = "<group>";
+		};
 		0BBCB36526FB733F004571B5 = {
 			isa = PBXGroup;
 			children = (
 				0BBCB37026FB733F004571B5 /* Set */,
+				0BA4D1B827360264002A54BE /* SetTests */,
 				0BBCB36F26FB733F004571B5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -106,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				0BBCB36E26FB733F004571B5 /* Set.app */,
+				0BA4D1B727360263002A54BE /* SetTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -136,6 +168,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0BA4D1B627360263002A54BE /* SetTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0BA4D1C027360264002A54BE /* Build configuration list for PBXNativeTarget "SetTests" */;
+			buildPhases = (
+				0BA4D1B327360263002A54BE /* Sources */,
+				0BA4D1B427360263002A54BE /* Frameworks */,
+				0BA4D1B527360263002A54BE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0BA4D1BD27360264002A54BE /* PBXTargetDependency */,
+			);
+			name = SetTests;
+			productName = SetTests;
+			productReference = 0BA4D1B727360263002A54BE /* SetTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		0BBCB36D26FB733F004571B5 /* Set */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0BBCB37D26FB7343004571B5 /* Build configuration list for PBXNativeTarget "Set" */;
@@ -162,6 +212,10 @@
 				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
+					0BA4D1B627360263002A54BE = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = 0BBCB36D26FB733F004571B5;
+					};
 					0BBCB36D26FB733F004571B5 = {
 						CreatedOnToolsVersion = 12.5;
 					};
@@ -181,11 +235,19 @@
 			projectRoot = "";
 			targets = (
 				0BBCB36D26FB733F004571B5 /* Set */,
+				0BA4D1B627360263002A54BE /* SetTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0BA4D1B527360263002A54BE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0BBCB36C26FB733F004571B5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -198,6 +260,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0BA4D1B327360263002A54BE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0BA4D1C227360B41002A54BE /* SetTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0BBCB36A26FB733F004571B5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -217,7 +287,57 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		0BA4D1BD27360264002A54BE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0BBCB36D26FB733F004571B5 /* Set */;
+			targetProxy = 0BA4D1BC27360264002A54BE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		0BA4D1BE27360264002A54BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X36XBZ33MM;
+				INFOPLIST_FILE = SetTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Gabriel-Haugbol.SetTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Set.app/Set";
+			};
+			name = Debug;
+		};
+		0BA4D1BF27360264002A54BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X36XBZ33MM;
+				INFOPLIST_FILE = SetTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Gabriel-Haugbol.SetTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Set.app/Set";
+			};
+			name = Release;
+		};
 		0BBCB37B26FB7343004571B5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -381,6 +501,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0BA4D1C027360264002A54BE /* Build configuration list for PBXNativeTarget "SetTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0BA4D1BE27360264002A54BE /* Debug */,
+				0BA4D1BF27360264002A54BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		0BBCB36926FB733F004571B5 /* Build configuration list for PBXProject "Set" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -8,22 +8,23 @@
 import Foundation
 
 struct Model {
-    private(set) var deckOfCards: Array<Card> = []
-    private(set) var shownCards: Array<Card> = []
-    private(set) var matchedCards: Array<Card> = []
+    private(set) var deckOfCards = [Card]()
+    private(set) var shownCards = [Card]()
+    private(set) var matchedCards = [Card]()
     
     mutating func choose(_ card: Card) {
         if let chosenIndex = shownCards.firstIndex(where: { $0.id == card.id}),
            !shownCards[chosenIndex].isMatched
         {
-            print(card)
             shownCards[chosenIndex].isSelected.toggle()
             
             let potentialMatchingCards = shownCards.filter({$0.isSelected == true})
             if  potentialMatchingCards.count == 3 {
                 if (isMatch(cards: potentialMatchingCards)) {
                     shownCards.indices.filter { shownCards[$0].isSelected == true }
-                        .forEach { shownCards[$0].isMatched = true }
+                        .forEach { shownCards[$0].isMatched = true
+                            shownCards[$0].isSelected = false
+                        }
                 } else {
                 shownCards.indices.filter { shownCards[$0].isSelected == true }
                     .forEach { shownCards[$0].isSelected = false }
@@ -140,6 +141,11 @@ struct Model {
     
     enum Fill: Int, CaseIterable {
         case fill=1, stripes, none
+    }
+    
+    //TODO slet?
+    mutating func setShownCards(cards: Array<Card>) {
+        shownCards=cards
     }
 }
 
