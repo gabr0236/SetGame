@@ -19,6 +19,7 @@ struct CardView: View {
                     shape.fill().foregroundColor(.white)
                     shape.strokeBorder(lineWidth: 4).foregroundColor(card.isSelected ? .red : .blue)
                 }
+            
                 VStack {
                     Spacer(minLength: 0)
                     ForEach(0..<card.numberOfShapes) { index in

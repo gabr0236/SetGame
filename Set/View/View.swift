@@ -18,14 +18,11 @@ struct SetGameView: View {
             }
             //Text("Score: \(game.score)")
             AspectVGrid(items: game.cards, aspectRatio: 2/3) { card in
-                if card.isMatched {
-                    Rectangle().opacity(0)
-                } else {
                     CardView(card: card)
                         .padding(4)
                         .onTapGesture {
                             game.choose(card)
-                        }
+        
                 }
             }.foregroundColor(.blue)
             .padding(.horizontal)

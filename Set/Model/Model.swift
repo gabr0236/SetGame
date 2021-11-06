@@ -13,7 +13,7 @@ struct Model {
     private(set) var matchedCards = [Card]()
     
     let numberOfCardsToMatch = 3
-    let numberOfStartCards = 13
+    let numberOfStartCards = 12
     
     mutating func choose(_ card: Card) {
         if let chosenIndex = shownCards.firstIndex(where: { $0.id == card.id}),
@@ -120,7 +120,6 @@ struct Model {
                 }
             }
         }
-        print("MATCH FAIL: WHAAAAAT??")
         return false
     }
     
@@ -134,11 +133,7 @@ struct Model {
     mutating func showThreeMoreCardsFromDeck()  {
         if deckOfCards.count >= 3 {
             for _ in 0...2 {
-                shownCards.append(deckOfCards.removeFirst())
-            }
-        } else {
-            for _ in deckOfCards {
-                shownCards.append(deckOfCards.removeFirst())
+                shownCards.append(deckOfCards.remove(at: 0))
             }
         }
     }
