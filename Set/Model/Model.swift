@@ -12,6 +12,9 @@ struct Model {
     private(set) var shownCards = [Card]()
     private(set) var matchedCards = [Card]()
     
+    let numberOfCardsToMatch = 3
+    let numberOfStartCards = 13
+    
     mutating func choose(_ card: Card) {
         if let chosenIndex = shownCards.firstIndex(where: { $0.id == card.id}),
            !shownCards[chosenIndex].isMatched
@@ -19,12 +22,11 @@ struct Model {
             shownCards[chosenIndex].isSelected.toggle()
             
             let potentialMatchingCards = shownCards.filter({$0.isSelected == true})
-            if  potentialMatchingCards.count == 3 {
+            if  potentialMatchingCards.count == numberOfCardsToMatch {
                 if (isMatch(cards: potentialMatchingCards)) {
                     shownCards.indices.filter { shownCards[$0].isSelected == true }
-                        .forEach { shownCards[$0].isMatched = true
-                            shownCards[$0].isSelected = false
-                        }
+                        .forEach { shownCards[$0].isMatched = true }
+                    changeCards()
                 } else {
                 shownCards.indices.filter { shownCards[$0].isSelected == true }
                     .forEach { shownCards[$0].isSelected = false }
@@ -33,6 +35,27 @@ struct Model {
         }
     }
     
+    var matchedIndices: [Int] {
+        shownCards.indices.filter { shownCards[$0].isSelected && shownCards[$0].isMatched }
+    }
+    
+    mutating func changeCards(){
+        guard matchedIndices.count == numberOfCardsToMatch else { return }
+        let replaceIndices = matchedIndices
+        //TODO: hvorfor && shownCards.count==numberOfStartCards??
+        if deckOfCards.count>=numberOfCardsToMatch && shownCards.count==numberOfStartCards {
+            //Replace
+            for index in replaceIndices {
+                shownCards.remove(at: index)
+                shownCards.insert(deckOfCards.remove(at: 0), at: index)
+            }
+        } else {
+            //Remove
+            shownCards = shownCards.enumerated()
+            .filter { !replaceIndices.contains($0.offset) }
+            .map { $0.element }
+        }
+    }
     
     init() {
         deckOfCards = Array<Card>()
@@ -63,7 +86,7 @@ struct Model {
     }
     
     func isMatch(cards: [Card]) -> Bool {
-        if(cards.count==3){
+        if(cards.count==numberOfCardsToMatch){
             if((cards[0].isSelected && cards[1].isSelected && cards[2].isSelected)
                 && (!cards[0].isMatched && !cards[1].isMatched && !cards[2].isMatched)){
                 //Check for number of shapes, if shapes are not all diffrent or all the same return false
@@ -103,7 +126,7 @@ struct Model {
     
     
     mutating func showStartingCards() {
-        for _ in 0...40 {
+        for _ in 1...numberOfStartCards {
             shownCards.append(deckOfCards.removeFirst())
         }
     }
