@@ -28,21 +28,21 @@ class SetTests: XCTestCase {
                 shape: Model.Shape.diamond,
                 color: Model.SetColor.green,
                 fill: Model.Fill.fill,
-                numberOfShapes: 3,
+                                numberOfShapes: Model.Number.three,
                 isSelected: true,
                 id: 1),
             Model.Card(
                 shape: Model.Shape.diamond,
                 color: Model.SetColor.orange,
                 fill: Model.Fill.fill,
-                numberOfShapes: 3,
+                numberOfShapes: Model.Number.three,
                 isSelected: true,
                 id: 2),
             Model.Card(
                 shape: Model.Shape.diamond,
                 color: Model.SetColor.pink,
                 fill: Model.Fill.fill,
-                numberOfShapes: 3,
+                numberOfShapes: Model.Number.three,
                 isSelected: true,
                 id: 3),]
         
@@ -55,5 +55,4 @@ class SetTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-
 }

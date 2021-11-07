@@ -66,7 +66,7 @@ struct Model {
     
     mutating func createCards() {
         var j = 0
-        for i in 1...3 {
+        for number in Number.allCases {
             for shape in Shape.allCases {
                 for color in SetColor.allCases {
                     for gradient in Fill.allCases {
@@ -74,7 +74,7 @@ struct Model {
                             Card(shape: shape,
                                  color: color,
                                  fill: gradient,
-                                 numberOfShapes: i,
+                                 numberOfShapes: number,
                                  id: j
                             ))
                         j+=1
@@ -86,6 +86,8 @@ struct Model {
     }
     
     func isMatch(cards: [Card]) -> Bool {
+        print("There is this many uniqe cards in cards: \(NSSet(array: shownCards).count) \nThere is a total of \(shownCards.count) in cards.")
+
         if(cards.count==numberOfCardsToMatch){
             if((cards[0].isSelected && cards[1].isSelected && cards[2].isSelected)
                 && (!cards[0].isMatched && !cards[1].isMatched && !cards[2].isMatched)){
@@ -143,7 +145,7 @@ struct Model {
         let shape: Shape
         let color: SetColor
         let fill: Fill
-        let numberOfShapes: Int
+        let numberOfShapes: Number
         var isMatched = false
         var isSelected = false
         let id: Int
@@ -161,16 +163,20 @@ struct Model {
         case fill=1, stripes, none
     }
     
+    enum Number: Int, CaseIterable {
+        case one=1, two, three
+    }
+    
     //TODO slet?
     mutating func setShownCards(cards: Array<Card>) {
         shownCards=cards
     }
 }
 
-extension Array where Element: Equatable {
-    mutating func remove(_ element: Element) {
-        _ = firstIndex(of: element).flatMap {
-            self.remove(at: $0)
-        }
-    }
-}
+//extension Array where Element: Equatable {
+//    mutating func remove(_ element: Element) {
+//        _ = firstIndex(of: element).flatMap {
+//            self.remove(at: $0)
+//        }
+//    }
+//}

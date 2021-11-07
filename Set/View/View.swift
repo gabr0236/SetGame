@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SetGameView: View {
-    @ObservedObject var game: ViewModel
+    @StateObject var game: ViewModel
     
     var body: some View {
         VStack{
@@ -16,7 +16,6 @@ struct SetGameView: View {
                 Text("Set Game")
                     .font(.largeTitle)
             }
-            //Text("Score: \(game.score)")
             AspectVGrid(items: game.cards, aspectRatio: 2/3) { card in
                     CardView(card: card)
                         .padding(4)

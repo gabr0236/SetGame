@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CardView: View {
     
-    let card: Model.Card
+    var card: Model.Card
     
     var body: some View {
         GeometryReader { geometry in
@@ -22,7 +22,8 @@ struct CardView: View {
             
                 VStack {
                     Spacer(minLength: 0)
-                    ForEach(0..<card.numberOfShapes) { index in
+                    //TODO: Error here?
+                    ForEach(0..<card.numberOfShapes.rawValue) { index in
                         cardShape().frame(height: geometry.size.height/6)
                     }
                     Spacer(minLength: 0)
@@ -63,7 +64,7 @@ struct CardView: View {
 
 struct SetCardView_Previews: PreviewProvider {
     static var previews: some View {
-        let card = Model.Card(shape: .diamond, color: .pink, fill: .none, numberOfShapes: 3, isSelected: true, id: 1)
+        let card = Model.Card(shape: .diamond, color: .pink, fill: .none, numberOfShapes: .two, isSelected: true, id: 1)
         CardView(card: card)
             .overlay(
                 RoundedRectangle( cornerRadius: 10)
