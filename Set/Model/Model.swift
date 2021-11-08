@@ -11,7 +11,7 @@ struct Model {
     private(set) var deckOfCards = [Card]()
     private(set) var shownCards = [Card]()
     private(set) var matchedCards = [Card]()
-    
+    var score = 0
     let numberOfCardsToMatch = 3
     let numberOfStartCards = 12
     
@@ -27,9 +27,11 @@ struct Model {
                     shownCards.indices.filter { shownCards[$0].isSelected == true }
                         .forEach { shownCards[$0].isMatched = true }
                     changeCards()
+                    score+=1
                 } else {
                 shownCards.indices.filter { shownCards[$0].isSelected == true }
                     .forEach { shownCards[$0].isSelected = false }
+                    score-=1
             }
         }
         }
@@ -166,6 +168,8 @@ struct Model {
     enum Number: Int, CaseIterable {
         case one=1, two, three
     }
+    
+    
     
     //TODO slet?
     mutating func setShownCards(cards: Array<Card>) {

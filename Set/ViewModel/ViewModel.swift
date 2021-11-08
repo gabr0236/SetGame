@@ -26,4 +26,16 @@ class ViewModel: ObservableObject {
     func showThreeMoreCardsFromDeck() {
         model.showThreeMoreCardsFromDeck()
     }
+    
+    func score() -> Int {
+        return model.score
+    }
+    
+    func isMoreThanThreeCardsInDeck() -> Bool {
+        return model.deckOfCards.count>=3
+    }
+    
+    func newGame() {
+        model = Model()
+    }
 }

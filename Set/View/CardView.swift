@@ -17,7 +17,7 @@ struct CardView: View {
                 let shape = RoundedRectangle(cornerRadius: 10)
                 if !card.isMatched {
                     shape.fill().foregroundColor(.white)
-                    shape.strokeBorder(lineWidth: 4).foregroundColor(card.isSelected ? .red : .blue)
+                    shape.strokeBorder(lineWidth: 4).foregroundColor(card.isSelected ? .purple : .blue)
                 }
             
                 VStack {

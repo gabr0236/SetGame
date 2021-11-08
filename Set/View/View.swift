@@ -13,20 +13,29 @@ struct SetGameView: View {
     var body: some View {
         VStack{
             HStack(alignment: .bottom){
-                Text("Set Game")
+                Text("Score: \(game.score())")
                     .font(.largeTitle)
             }
             AspectVGrid(items: game.cards, aspectRatio: 2/3) { card in
-                    CardView(card: card)
-                        .padding(4)
-                        .onTapGesture {
-                            game.choose(card)
-        
-                }
+                CardView(card: card)
+                    .padding(4)
+                    .onTapGesture {
+                        game.choose(card)
+                    }
             }.foregroundColor(.blue)
             .padding(.horizontal)
-            Button("show 3 more cards"){
-                game.showThreeMoreCardsFromDeck()
+            HStack{
+                Spacer()
+                Spacer()
+                Button("Add Three Cards"){
+                    game.showThreeMoreCardsFromDeck()
+                }.disabled(!game.isMoreThanThreeCardsInDeck())
+                .frame(maxWidth: .infinity)
+                Button("New Game"){
+                    game.newGame()
+                }.frame(maxWidth: .infinity)
+                Spacer()
+                Spacer()
             }
         }
     }
@@ -56,6 +65,8 @@ struct SetGameView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let game = ViewModel()
-        SetGameView(game: game)
+        Group {
+            SetGameView(game: game)
+        }
     }
 }
