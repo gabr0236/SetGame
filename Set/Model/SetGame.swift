@@ -87,43 +87,14 @@ struct SetGame {
     }
     
     func isMatch(cards: [SetCard]) -> Bool {
-        print("There is this many uniqe cards in cards: \(NSSet(array: shownCards).count) \nThere is a total of \(shownCards.count) in cards.")
-
-        if(cards.count==numberOfCardsToMatch){
-            if((cards[0].isSelected && cards[1].isSelected && cards[2].isSelected)
-                && (!cards[0].isMatched && !cards[1].isMatched && !cards[2].isMatched)){
-                //Check for number of shapes, if shapes are not all diffrent or all the same return false
-                if(!((cards[0].numberOfShapes==cards[1].numberOfShapes && cards[1].numberOfShapes==cards[2].numberOfShapes)
-                        || ((cards[0].numberOfShapes != cards[1].numberOfShapes) && (cards[0].numberOfShapes != cards[2].numberOfShapes)
-                                && (cards[2].numberOfShapes != cards[1].numberOfShapes)))){
-                    print("MATCH FAIL: numberofshape")
-                    return false
-                }
-                else if(!((cards[0].color==cards[1].color && cards[1].color==cards[2].color)
-                            || ((cards[0].color != cards[1].color) && (cards[0].color != cards[2].color)
-                                    && (cards[2].color != cards[1].color)))){
-                    print("MATCH FAIL: color")
-                    return false
-                }
-                else if(!((cards[0].fill==cards[1].fill && cards[1].fill==cards[2].fill)
-                            || ((cards[0].fill != cards[1].fill) && (cards[0].fill != cards[2].fill)
-                                    && (cards[2].fill != cards[1].fill)))){
-                    print("MATCH FAIL: fill")
-                    return false
-                }
-                else if(!((cards[0].shape==cards[1].shape && cards[1].shape==cards[2].shape)
-                            || ((cards[0].shape != cards[1].shape) && (cards[0].shape != cards[2].shape)
-                                    && (cards[2].shape != cards[1].shape)))){
-                    print("MATCH FAIL: shape")
-                    return false
-                }
-                else {
-                    print("MATCH!!")
-                    return true
-                }
-            }
-        }
-        return false
+        guard cards.count==3 else { return false }
+        let sum = [
+            cards.reduce(0, { $0 + $1.color.rawValue }),
+            cards.reduce(0, { $0 + $1.fill.rawValue }),
+            cards.reduce(0, { $0 + $1.numberOfShapes.rawValue }),
+            cards.reduce(0, { $0 + $1.shape.rawValue })
+        ]
+        return sum.reduce(0,+) % 3 == 0
     }
     
     
