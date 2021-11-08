@@ -10,11 +10,11 @@ import XCTest
 
 class SetTests: XCTestCase {
 
-    var sut: Model!
+    var sut: SetGame!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        sut = Model()
+        sut = SetGame()
     }
 
     override func tearDownWithError() throws {
@@ -24,25 +24,25 @@ class SetTests: XCTestCase {
     }
 
     func testExample() throws {
-        let shownCards = [   Model.Card(
-                shape: Model.Shape.diamond,
-                color: Model.SetColor.green,
-                fill: Model.Fill.fill,
-                                numberOfShapes: Model.Number.three,
+        let shownCards = [   SetGame.Card(
+                shape: SetGame.Shape.diamond,
+                color: SetGame.SetColor.green,
+                fill: SetGame.Fill.fill,
+                                numberOfShapes: SetGame.Variant.three,
                 isSelected: true,
                 id: 1),
-            Model.Card(
-                shape: Model.Shape.diamond,
-                color: Model.SetColor.orange,
-                fill: Model.Fill.fill,
-                numberOfShapes: Model.Number.three,
+            SetGame.Card(
+                shape: SetGame.Shape.diamond,
+                color: SetGame.SetColor.orange,
+                fill: SetGame.Fill.fill,
+                numberOfShapes: SetGame.Variant.three,
                 isSelected: true,
                 id: 2),
-            Model.Card(
-                shape: Model.Shape.diamond,
-                color: Model.SetColor.pink,
-                fill: Model.Fill.fill,
-                numberOfShapes: Model.Number.three,
+            SetGame.Card(
+                shape: SetGame.Shape.diamond,
+                color: SetGame.SetColor.pink,
+                fill: SetGame.Fill.fill,
+                numberOfShapes: SetGame.Variant.three,
                 isSelected: true,
                 id: 3),]
         

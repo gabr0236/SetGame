@@ -12,13 +12,14 @@
 		0B4B3A7626FF56BF00F2138B /* ShapeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B3A7526FF56BF00F2138B /* ShapeExtensions.swift */; };
 		0B4B3A7826FF574600F2138B /* StripedRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B3A7726FF574600F2138B /* StripedRect.swift */; };
 		0B4B3A7E26FF96F800F2138B /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B3A7D26FF96F800F2138B /* CardView.swift */; };
+		0B6FB7952739A4B300DF6EB1 /* SetCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6FB7942739A4B300DF6EB1 /* SetCard.swift */; };
 		0BA4D1C227360B41002A54BE /* SetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA4D1B927360264002A54BE /* SetTests.swift */; };
 		0BBCB37226FB733F004571B5 /* SetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCB37126FB733F004571B5 /* SetApp.swift */; };
 		0BBCB37426FB733F004571B5 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCB37326FB733F004571B5 /* View.swift */; };
 		0BBCB37626FB7343004571B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BBCB37526FB7343004571B5 /* Assets.xcassets */; };
 		0BBCB37926FB7343004571B5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BBCB37826FB7343004571B5 /* Preview Assets.xcassets */; };
 		0BBCB38326FB74A8004571B5 /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCB38226FB74A8004571B5 /* AspectVGrid.swift */; };
-		0BBCB38526FB75D4004571B5 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCB38426FB75D4004571B5 /* Model.swift */; };
+		0BBCB38526FB75D4004571B5 /* SetGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCB38426FB75D4004571B5 /* SetGame.swift */; };
 		0BBCB38B26FBA893004571B5 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCB38A26FBA893004571B5 /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 		0B4B3A7526FF56BF00F2138B /* ShapeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeExtensions.swift; sourceTree = "<group>"; };
 		0B4B3A7726FF574600F2138B /* StripedRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripedRect.swift; sourceTree = "<group>"; };
 		0B4B3A7D26FF96F800F2138B /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		0B6FB7942739A4B300DF6EB1 /* SetCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCard.swift; sourceTree = "<group>"; };
 		0BA4D1B727360263002A54BE /* SetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BA4D1B927360264002A54BE /* SetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTests.swift; sourceTree = "<group>"; usesTabs = 0; };
 		0BA4D1BB27360264002A54BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -48,7 +50,7 @@
 		0BBCB37826FB7343004571B5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0BBCB37A26FB7343004571B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0BBCB38226FB74A8004571B5 /* AspectVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = "<group>"; };
-		0BBCB38426FB75D4004571B5 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		0BBCB38426FB75D4004571B5 /* SetGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGame.swift; sourceTree = "<group>"; };
 		0BBCB38A26FBA893004571B5 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,7 +104,8 @@
 		0B4B3A7B26FF57DE00F2138B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0BBCB38426FB75D4004571B5 /* Model.swift */,
+				0BBCB38426FB75D4004571B5 /* SetGame.swift */,
+				0B6FB7942739A4B300DF6EB1 /* SetCard.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -280,7 +283,8 @@
 				0B4B3A7826FF574600F2138B /* StripedRect.swift in Sources */,
 				0BBCB37426FB733F004571B5 /* View.swift in Sources */,
 				0BBCB37226FB733F004571B5 /* SetApp.swift in Sources */,
-				0BBCB38526FB75D4004571B5 /* Model.swift in Sources */,
+				0B6FB7952739A4B300DF6EB1 /* SetCard.swift in Sources */,
+				0BBCB38526FB75D4004571B5 /* SetGame.swift in Sources */,
 				0BBCB38326FB74A8004571B5 /* AspectVGrid.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

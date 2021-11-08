@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct Model {
-    private(set) var deckOfCards = [Card]()
-    private(set) var shownCards = [Card]()
-    private(set) var matchedCards = [Card]()
+struct SetGame {
+    private(set) var deckOfCards = [SetCard]()
+    private(set) var shownCards = [SetCard]()
+    private(set) var matchedCards = [SetCard]()
     var score = 0
     let numberOfCardsToMatch = 3
     let numberOfStartCards = 12
     
-    mutating func choose(_ card: Card) {
+    mutating func choose(_ card: SetCard) {
         if let chosenIndex = shownCards.firstIndex(where: { $0.id == card.id}),
            !shownCards[chosenIndex].isMatched
         {
@@ -44,7 +44,6 @@ struct Model {
     mutating func changeCards(){
         guard matchedIndices.count == numberOfCardsToMatch else { return }
         let replaceIndices = matchedIndices
-        //TODO: hvorfor && shownCards.count==numberOfStartCards??
         if deckOfCards.count>=numberOfCardsToMatch && shownCards.count==numberOfStartCards {
             //Replace
             for index in replaceIndices {
@@ -60,7 +59,7 @@ struct Model {
     }
     
     init() {
-        deckOfCards = Array<Card>()
+        deckOfCards = Array<SetCard>()
         createCards()
         deckOfCards.shuffle()
         showStartingCards()
@@ -68,12 +67,12 @@ struct Model {
     
     mutating func createCards() {
         var j = 0
-        for number in Number.allCases {
-            for shape in Shape.allCases {
-                for color in SetColor.allCases {
-                    for gradient in Fill.allCases {
+        for number in Variant.allCases {
+            for shape in Variant.allCases {
+                for color in Variant.allCases {
+                    for gradient in Variant.allCases {
                         deckOfCards.append(
-                            Card(shape: shape,
+                            SetCard(shape: shape,
                                  color: color,
                                  fill: gradient,
                                  numberOfShapes: number,
@@ -87,7 +86,7 @@ struct Model {
         print("There is this many uniqe cards in deck: \(NSSet(array: deckOfCards).count) \nThere is a total of \(deckOfCards.count) in deck.")
     }
     
-    func isMatch(cards: [Card]) -> Bool {
+    func isMatch(cards: [SetCard]) -> Bool {
         print("There is this many uniqe cards in cards: \(NSSet(array: shownCards).count) \nThere is a total of \(shownCards.count) in cards.")
 
         if(cards.count==numberOfCardsToMatch){
@@ -142,37 +141,8 @@ struct Model {
         }
     }
     
-    struct Card: Identifiable, Equatable {
-        public var description: String { "CARD - Shape: \(shape), Color: \(color), Fill: \(fill), NumberOfShapes: \(numberOfShapes)"}
-        let shape: Shape
-        let color: SetColor
-        let fill: Fill
-        let numberOfShapes: Number
-        var isMatched = false
-        var isSelected = false
-        let id: Int
-    }
-    
-    enum Shape: Int,CaseIterable {
-        case diamond=1, roundedRectangle, squiglle
-    }
-    
-    enum SetColor: Int, CaseIterable {
-        case green=1, orange, pink
-    }
-    
-    enum Fill: Int, CaseIterable {
-        case fill=1, stripes, none
-    }
-    
-    enum Number: Int, CaseIterable {
-        case one=1, two, three
-    }
-    
-    
-    
     //TODO slet?
-    mutating func setShownCards(cards: Array<Card>) {
+    mutating func setShownCards(cards: Array<SetCard>) {
         shownCards=cards
     }
 }

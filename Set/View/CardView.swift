@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CardView: View {
     
-    var card: Model.Card
+    var card: SetCard
     
     var body: some View {
         GeometryReader { geometry in
@@ -36,17 +36,17 @@ struct CardView: View {
     
     @ViewBuilder private func cardShape() -> some View {
         switch card.shape {
-        case .squiglle:          shapeFill(shape: Squiggle())
-        case .roundedRectangle:  shapeFill(shape: Capsule())
-        case .diamond:           shapeFill(shape: Diamond())
+        case .one:          shapeFill(shape: Squiggle())
+        case .two:  shapeFill(shape: Capsule())
+        case .three:           shapeFill(shape: Diamond())
         }
     }
     
     private func setColor() -> Color {
         switch card.color {
-        case .pink: return Color.pink
-        case .orange: return Color.orange
-        case .green: return Color.green
+        case .one: return Color.pink
+        case .two: return Color.orange
+        case .three: return Color.green
         }
     }
     
@@ -54,16 +54,16 @@ struct CardView: View {
     //TODO: se løsning, brug rawvalues for cleanness
     where setShape: Shape {
         switch card.fill {
-        case .fill:       shape.fillAndBorder()
-        case .stripes:    shape.stripe()
-        case .none:       shape.stroke(lineWidth: 2)
+        case .one:       shape.fillAndBorder()
+        case .two:    shape.stripe()
+        case .three:       shape.stroke(lineWidth: 2)
         }
     }
 }
 
 struct SetCardView_Previews: PreviewProvider {
     static var previews: some View {
-        let card = Model.Card(shape: .diamond, color: .pink, fill: .none, numberOfShapes: .two, isSelected: true, id: 1)
+        let card = SetCard(shape: .one, color: .two, fill: .two, numberOfShapes: .two, isSelected: true, id: 1)
         CardView(card: card)
             .overlay(
                 RoundedRectangle( cornerRadius: 10)
