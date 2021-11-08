@@ -22,8 +22,7 @@ struct CardView: View {
             
                 VStack {
                     Spacer(minLength: 0)
-                    //TODO: Error here?
-                    ForEach(0..<card.numberOfShapes.rawValue) { index in
+                    ForEach(0..<card.numberOfShapes.rawValue, id: \.self) { index in
                         cardShape().frame(height: geometry.size.height/6)
                     }
                     Spacer(minLength: 0)
