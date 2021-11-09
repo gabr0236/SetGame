@@ -28,17 +28,17 @@ struct SetGame {
             // ---- If 3 cards were already selected ---- //
             if shownCards.filter({$0.isSelected}).count==3 {
                 let potentialMatchingCards1 = shownCards.filter({$0.isSelected == true})
-                    if (isMatch(cards: potentialMatchingCards1)){
-                        // ---- Match ---- //
-                        changeCards()
-                        return
-                    } else {
-                        // ---- Not Match ---- //
-                        shownCards.indices.filter { shownCards[$0].isSelected == true }
-                            .forEach { shownCards[$0].isSelected = false
-                                shownCards[$0].isWrongGuess = false
-                            }
-                    }
+                if (isMatch(cards: potentialMatchingCards1)){
+                    // ---- Match ---- //
+                    changeCards()
+                    return
+                } else {
+                    // ---- Not Match ---- //
+                    shownCards.indices.filter { shownCards[$0].isSelected == true }
+                        .forEach { shownCards[$0].isSelected = false
+                            shownCards[$0].isWrongGuess = false
+                        }
+                }
             }
             
             shownCards[chosenIndex].isSelected.toggle()
@@ -56,12 +56,12 @@ struct SetGame {
                     score+=1*streak
                 } else {
                     // ---- Not Match ---- //
-                shownCards.indices.filter { shownCards[$0].isSelected == true }
-                    .forEach { shownCards[$0].isWrongGuess = true }
+                    shownCards.indices.filter { shownCards[$0].isSelected == true }
+                        .forEach { shownCards[$0].isWrongGuess = true }
                     score-=1
                     streak=0
+                }
             }
-        }
         }
     }
     
@@ -77,8 +77,8 @@ struct SetGame {
         } else {
             //Remove
             shownCards = shownCards.enumerated()
-            .filter { !replaceIndices.contains($0.offset) }
-            .map { $0.element }
+                .filter { !replaceIndices.contains($0.offset) }
+                .map { $0.element }
         }
     }
     
@@ -97,10 +97,10 @@ struct SetGame {
                     for gradient in Variant.allCases {
                         deckOfCards.append(
                             SetCard(shape: shape,
-                                 color: color,
-                                 fill: gradient,
-                                 numberOfShapes: number,
-                                 id: j
+                                    color: color,
+                                    fill: gradient,
+                                    numberOfShapes: number,
+                                    id: j
                             ))
                         j+=1
                     }
@@ -130,17 +130,27 @@ struct SetGame {
     
     mutating func showThreeMoreCardsFromDeck()  {
         if deckOfCards.count >= 3 {
-            for _ in 0...2 {
-                shownCards.append(deckOfCards.remove(at: 0))
+            let replaceIndices = matchedIndices
+            if replaceIndices.count==3 {
+                //---- Replace if 3 cards is already matched ----//
+                for index in replaceIndices {
+                    shownCards.remove(at: index)
+                    shownCards.insert(deckOfCards.remove(at: 0), at: index)
+                }
+            } else {
+                //---- Add Three Cards ----//
+                for _ in 0...2 {
+                    shownCards.append(deckOfCards.remove(at: 0))
+                }
             }
         }
     }
-    
-    //TODO slet?
-    mutating func setShownCards(cards: Array<SetCard>) {
-        shownCards=cards
+        
+        //TODO slet?
+        mutating func setShownCards(cards: Array<SetCard>) {
+            shownCards=cards
+        }
     }
-}
 
 //extension Array where Element: Equatable {
 //    mutating func remove(_ element: Element) {
