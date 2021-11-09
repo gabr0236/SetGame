@@ -42,4 +42,8 @@ class ViewModel: ObservableObject {
     func isStreak() -> Bool {
         return model.streak>1
     }
+    
+    func hint() {
+        model.hint()
+    }
 }

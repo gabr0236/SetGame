@@ -145,12 +145,36 @@ struct SetGame {
             }
         }
     }
-        
-        //TODO slet?
-        mutating func setShownCards(cards: Array<SetCard>) {
-            shownCards=cards
+    
+    var indexesOfAllMatches: [[Int]] {
+        var hints = [[Int]]()
+        if shownCards.count>=numberOfCardsToMatch {
+            for i in 0..<shownCards.count-2 {
+                for j in (i+1)..<shownCards.count-1 {
+                    for k in (j+1)..<shownCards.count {
+                        let currentCards = [shownCards[i], shownCards[j], shownCards[k]]
+                        if isMatch(cards: currentCards) { hints.append([i,j,k]) }
+                    }
+                }
+            }
+        }
+        return hints
+    }
+    
+mutating func hint() {
+    if shownCards.filter({$0.isHint}).isEmpty {
+        if let indexOfRandomMatchingSet = indexesOfAllMatches.randomElement() {
+            for i in 0..<indexOfRandomMatchingSet.count {
+                shownCards[indexOfRandomMatchingSet[i]].isHint=true
+            }
         }
     }
+}
+    
+    mutating func deHint(){
+        shownCards.indices.filter({shownCards[$0].isHint}).forEach({shownCards[$0].isHint=false})
+    }
+}
 
 //extension Array where Element: Equatable {
 //    mutating func remove(_ element: Element) {
