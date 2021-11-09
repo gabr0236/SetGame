@@ -15,6 +15,7 @@ struct SetGameView: View {
             HStack(alignment: .bottom){
                 Text(game.isStreak() ? "️‍🔥Score: \(game.score())🔥" : "Score: \(game.score())")
                     .font(.largeTitle)
+                    .foregroundColor(game.isStreak() ? .green : .primary)
             }
             AspectVGrid(items: game.cards, aspectRatio: 2/3) { card in
                 CardView(card: card)

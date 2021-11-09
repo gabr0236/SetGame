@@ -14,6 +14,7 @@ struct SetGame {
     let numberOfCardsToMatch = 3
     let numberOfStartCards = 12
     private(set) var streak = 0
+    let maxStreak = 3
     
     var matchedIndices: [Int] {
         shownCards.indices.filter { shownCards[$0].isSelected && shownCards[$0].isMatched }
@@ -51,7 +52,7 @@ struct SetGame {
                     // ---- Match ---- //
                     shownCards.indices.filter { shownCards[$0].isSelected == true }
                         .forEach { shownCards[$0].isMatched = true }
-                    streak+=1
+                    streak+=(streak<maxStreak ? 1 : 0)
                     score+=1*streak
                 } else {
                     // ---- Not Match ---- //
