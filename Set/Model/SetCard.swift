@@ -8,7 +8,7 @@
 import Foundation
 
 struct SetCard: Identifiable, Equatable {
-    public var description: String { "CARD - Shape: \(shape), Color: \(color), Fill: \(fill), NumberOfShapes: \(numberOfShapes)"}
+    public var description: String { "CARD - Shape: \(shape), Color: \(color), Fill: \(fill), NumberOfShapes: \(numberOfShapes)" }
     let shape: Variant
     let color: Variant
     let fill: Variant

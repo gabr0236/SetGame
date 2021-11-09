@@ -26,20 +26,16 @@ struct SetGameView: View {
             }.foregroundColor(.blue)
             .padding(.horizontal)
             HStack{
-                Spacer()
-                Button("Hint"){
+                Button("Show Hint"){
                     game.hint()
                 }.frame(maxWidth: .infinity)
-                Spacer()
                 Button("Add Three Cards"){
                     game.showThreeMoreCardsFromDeck()
                 }.disabled(!game.isMoreThanThreeCardsInDeck())
                 .frame(maxWidth: .infinity)
-                Spacer()
                 Button("New Game"){
                     game.newGame()
                 }.frame(maxWidth: .infinity)
-                Spacer()
             }
         }
     }

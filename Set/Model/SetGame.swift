@@ -54,6 +54,7 @@ struct SetGame {
                         .forEach { shownCards[$0].isMatched = true }
                     streak+=(streak<maxStreak ? 1 : 0)
                     score+=1*streak
+                    deHint()
                 } else {
                     // ---- Not Match ---- //
                     shownCards.indices.filter { shownCards[$0].isSelected == true }
