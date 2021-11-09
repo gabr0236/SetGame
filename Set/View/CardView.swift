@@ -15,10 +15,8 @@ struct CardView: View {
         GeometryReader { geometry in
             ZStack{
                 let shape = RoundedRectangle(cornerRadius: 10)
-                if !card.isMatched {
-                    shape.fill().foregroundColor(.white)
-                    shape.strokeBorder(lineWidth: 4).foregroundColor(card.isSelected ? .purple : .blue)
-                }
+                
+                    shape.strokeBorder(lineWidth: 4).foregroundColor(card.isMatched ? .green : (card.isWrongGuess ? .red : (card.isSelected ? .purple : .blue)))
             
                 VStack {
                     Spacer(minLength: 0)
@@ -60,6 +58,23 @@ struct CardView: View {
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 struct SetCardView_Previews: PreviewProvider {
     static var previews: some View {

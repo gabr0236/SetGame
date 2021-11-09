@@ -10,15 +10,32 @@ import Foundation
 struct SetGame {
     private(set) var deckOfCards = [SetCard]()
     private(set) var shownCards = [SetCard]()
-    private(set) var matchedCards = [SetCard]()
     var score = 0
     let numberOfCardsToMatch = 3
     let numberOfStartCards = 12
+    private(set) var streak = 0
+    
+    var matchedIndices: [Int] {
+        shownCards.indices.filter { shownCards[$0].isSelected && shownCards[$0].isMatched }
+    }
     
     mutating func choose(_ card: SetCard) {
-        if let chosenIndex = shownCards.firstIndex(where: { $0.id == card.id}),
-           !shownCards[chosenIndex].isMatched
+        print("choose called")
+        if let chosenIndex = shownCards.firstIndex(where: { $0.id == card.id})
         {
+            if shownCards.filter({$0.isSelected}).count==3 {
+                let potentialMatchingCards1 = shownCards.filter({$0.isSelected == true})
+                    if (isMatch(cards: potentialMatchingCards1)){
+                        changeCards()
+                        return
+                    } else {
+                        shownCards.indices.filter { shownCards[$0].isSelected == true }
+                            .forEach { shownCards[$0].isSelected = false
+                                shownCards[$0].isWrongGuess = false
+                            }
+                    }
+            }
+            
             shownCards[chosenIndex].isSelected.toggle()
             
             let potentialMatchingCards = shownCards.filter({$0.isSelected == true})
@@ -26,19 +43,16 @@ struct SetGame {
                 if (isMatch(cards: potentialMatchingCards)) {
                     shownCards.indices.filter { shownCards[$0].isSelected == true }
                         .forEach { shownCards[$0].isMatched = true }
-                    changeCards()
                     score+=1
+                    streak+=1
                 } else {
                 shownCards.indices.filter { shownCards[$0].isSelected == true }
-                    .forEach { shownCards[$0].isSelected = false }
+                    .forEach { shownCards[$0].isWrongGuess = true }
                     score-=1
+                    streak=0
             }
         }
         }
-    }
-    
-    var matchedIndices: [Int] {
-        shownCards.indices.filter { shownCards[$0].isSelected && shownCards[$0].isMatched }
     }
     
     mutating func changeCards(){
@@ -94,7 +108,7 @@ struct SetGame {
             cards.reduce(0, { $0 + $1.numberOfShapes.rawValue }),
             cards.reduce(0, { $0 + $1.shape.rawValue })
         ]
-        return sum.reduce(0,+) % 3 == 0
+        return sum.reduce(true, { $0 && ($1 % 3 == 0) })
     }
     
     

@@ -31,7 +31,6 @@ struct Diamond_Preview: PreviewProvider {
         VStack {
             Diamond().stroke(lineWidth: 5)
             Diamond().fill()
-            //Diamond().stripe()
         }.padding()
     }
 }

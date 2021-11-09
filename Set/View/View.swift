@@ -13,7 +13,7 @@ struct SetGameView: View {
     var body: some View {
         VStack{
             HStack(alignment: .bottom){
-                Text("Score: \(game.score())")
+                Text(game.isStreak() ? "️‍🔥Score: \(game.score())🔥" : "Score: \(game.score())")
                     .font(.largeTitle)
             }
             AspectVGrid(items: game.cards, aspectRatio: 2/3) { card in

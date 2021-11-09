@@ -15,6 +15,7 @@ struct SetCard: Identifiable, Equatable {
     let numberOfShapes: Variant
     var isMatched = false
     var isSelected = false
+    var isWrongGuess = false
     let id: Int
 }
 enum Variant: Int, CaseIterable {

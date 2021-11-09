@@ -38,4 +38,8 @@ class ViewModel: ObservableObject {
     func newGame() {
         model = SetGame()
     }
+    
+    func isStreak() -> Bool {
+        return model.streak>1
+    }
 }
