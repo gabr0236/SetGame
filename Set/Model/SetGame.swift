@@ -23,12 +23,16 @@ struct SetGame {
         print("choose called")
         if let chosenIndex = shownCards.firstIndex(where: { $0.id == card.id})
         {
+            
+            // ---- If 3 cards were already selected ---- //
             if shownCards.filter({$0.isSelected}).count==3 {
                 let potentialMatchingCards1 = shownCards.filter({$0.isSelected == true})
                     if (isMatch(cards: potentialMatchingCards1)){
+                        // ---- Match ---- //
                         changeCards()
                         return
                     } else {
+                        // ---- Not Match ---- //
                         shownCards.indices.filter { shownCards[$0].isSelected == true }
                             .forEach { shownCards[$0].isSelected = false
                                 shownCards[$0].isWrongGuess = false
@@ -38,14 +42,19 @@ struct SetGame {
             
             shownCards[chosenIndex].isSelected.toggle()
             
+            
             let potentialMatchingCards = shownCards.filter({$0.isSelected == true})
+            
+            // ---- If 3 cards is now selected ---- //
             if  potentialMatchingCards.count == numberOfCardsToMatch {
                 if (isMatch(cards: potentialMatchingCards)) {
+                    // ---- Match ---- //
                     shownCards.indices.filter { shownCards[$0].isSelected == true }
                         .forEach { shownCards[$0].isMatched = true }
-                    score+=1
                     streak+=1
+                    score+=1*streak
                 } else {
+                    // ---- Not Match ---- //
                 shownCards.indices.filter { shownCards[$0].isSelected == true }
                     .forEach { shownCards[$0].isWrongGuess = true }
                     score-=1
