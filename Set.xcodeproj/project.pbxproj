@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B3689C9273B6A9700D5562B /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3689C8273B6A9700D5562B /* GameTimer.swift */; };
 		0B4B3A7126FF16D500F2138B /* Diamond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B3A7026FF16D500F2138B /* Diamond.swift */; };
 		0B4B3A7426FF3C3500F2138B /* Squiggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B3A7326FF3C3500F2138B /* Squiggle.swift */; };
 		0B4B3A7626FF56BF00F2138B /* ShapeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B3A7526FF56BF00F2138B /* ShapeExtensions.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B3689C8273B6A9700D5562B /* GameTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimer.swift; sourceTree = "<group>"; };
 		0B4B3A7026FF16D500F2138B /* Diamond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diamond.swift; sourceTree = "<group>"; };
 		0B4B3A7326FF3C3500F2138B /* Squiggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Squiggle.swift; sourceTree = "<group>"; };
 		0B4B3A7526FF56BF00F2138B /* ShapeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeExtensions.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			children = (
 				0BBCB38426FB75D4004571B5 /* SetGame.swift */,
 				0B6FB7942739A4B300DF6EB1 /* SetCard.swift */,
+				0B3689C8273B6A9700D5562B /* GameTimer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				0B4B3A7426FF3C3500F2138B /* Squiggle.swift in Sources */,
 				0BBCB38B26FBA893004571B5 /* ViewModel.swift in Sources */,
 				0B4B3A7E26FF96F800F2138B /* CardView.swift in Sources */,
+				0B3689C9273B6A9700D5562B /* GameTimer.swift in Sources */,
 				0B4B3A7826FF574600F2138B /* StripedRect.swift in Sources */,
 				0BBCB37426FB733F004571B5 /* View.swift in Sources */,
 				0BBCB37226FB733F004571B5 /* SetApp.swift in Sources */,

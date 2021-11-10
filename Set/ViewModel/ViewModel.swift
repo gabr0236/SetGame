@@ -43,6 +43,10 @@ class ViewModel: ObservableObject {
         return model.streak>1
     }
     
+    func isHintAvailible() -> Bool {
+        return model.hintsUsed<=model.maxHints
+    }
+    
     func hint() {
         model.hint()
     }

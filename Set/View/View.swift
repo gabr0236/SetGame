@@ -29,6 +29,7 @@ struct SetGameView: View {
                 Button("Show Hint"){
                     game.hint()
                 }.frame(maxWidth: .infinity)
+                .disabled(!game.isHintAvailible())
                 Button("Add Three Cards"){
                     game.showThreeMoreCardsFromDeck()
                 }.disabled(!game.isMoreThanThreeCardsInDeck())
