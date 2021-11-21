@@ -13,18 +13,20 @@ struct SetGame {
     var score = 0
     let numberOfCardsToMatch = 3
     let numberOfStartCards = 12
-    private(set) var streak = 0
-    let maxStreak = 3
     var hintsUsed = 0
     let maxHints = 10
     let gameTimer = GameTimer()
     
     //---- Scoring ----//
-    let maxBonusPoints = 1000
-    let pointsPerCorrect = 500
-    let maxPenaltyForMoreCardsShown = 500
+    let maxBonusPoints = 1000.0
+    let pointsPerCorrect = 500.0
+    let maxPenaltyForMoreCardsShown = 500.0
     let timeSpentBonusLimit = 40
     let extraCardsShownForMaxPenalty = 18
+    let maxStreak = 3.0
+    private(set) var streak = 0.0
+
+
     var extraCardsShown: Int {
         shownCards.count-numberOfStartCards>0 ? shownCards.count-numberOfStartCards : 0
     }
@@ -77,34 +79,48 @@ struct SetGame {
                     // ---- Not Match ---- //
                     shownCards.indices.filter { shownCards[$0].isSelected == true }
                         .forEach { shownCards[$0].isWrongGuess = true }
-                    score-=1
-                    streak=0
+                    updateScoreWrongGuess()
                 }
             }
         }
     }
     
+    mutating func updateScoreWrongGuess() {
+        score-=800
+        streak=0
+    }
+    
     mutating func updateScoreCorrectGuess(timeSpent: Int) {
-        guard matchedIndices.count==3 else { return }
-        
-        var addToScore = 0
-        streak+=(streak<maxStreak ? 1 : 0)
-        
-        //---- Add Time Bonus ----//
-        let timeBonusPercent = timeSpent<timeSpentBonusLimit ? timeSpent/timeSpentBonusLimit : 0
-        
-        addToScore += timeBonusPercent==0 ? 0 : maxBonusPoints*(1-timeBonusPercent)
-        
+        print("SCORE: \(score)")
+        //Formula: 1000*(1-(TimeSpent/40))-500/6*ExtraShownCardSets+500
+        var addToScore: Double = 0
+
+        //---- Add Time Bonus 1000*(1-(TimeSpent/40)) ----//
+        let timeBonusPercent = Double(timeSpent)/Double(timeSpentBonusLimit)
+        addToScore += timeBonusPercent==0 ? 0 : Double(maxBonusPoints*(1.0-timeBonusPercent))
+        print("TIMEBONUSPERCENT: \(addToScore)")
+
         //---- Add Extra Cards Shown Penalty ----//
-        addToScore += -maxPenaltyForMoreCardsShown/(extraCardsShownForMaxPenalty*extraCardsShown)
-        
+        if extraCardsShown != 0 {
+        addToScore += (-maxPenaltyForMoreCardsShown/Double(extraCardsShownForMaxPenalty))*Double(extraCardsShown)
+        print("EXTRA CARDS SHOWN PENALTY: \((-maxPenaltyForMoreCardsShown/Double(extraCardsShownForMaxPenalty))*Double(extraCardsShown))")
+        }
+
         //---- Add Standard Points ----//
         addToScore += pointsPerCorrect
-        
+        print("POINTS PR CORRECT: \(pointsPerCorrect)")
+
+
         //---- Add Streak Multiplier ----//
-        addToScore += addToScore*(1+streak/10)
+        if (streak != 0) {
+            print("STREAK MULTIPLIER: \(addToScore*(1.0+streak/10.0))")
+            addToScore += addToScore*(streak/10.0)
+        }
+
         
-        score+=addToScore
+        streak+=(streak<maxStreak ? 1 : 0)
+        score+=Int(addToScore)
+        print("FINAL ADDTOSCORE: \(addToScore)")
     }
     
     mutating func changeCards(){
@@ -181,7 +197,7 @@ struct SetGame {
                 }
             } else {
                 //TODO score update
-                if indexesOfAllMatches.count>0 { score-=1 }
+                if indexesOfAllMatches.count>0 {  }
                 //---- Add Three Cards ----//
                 for _ in 0...2 {
                     shownCards.append(deckOfCards.remove(at: 0))
