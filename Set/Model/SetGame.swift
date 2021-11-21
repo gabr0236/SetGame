@@ -28,7 +28,10 @@ struct SetGame {
 
 
     var extraCardsShown: Int {
-        shownCards.count-numberOfStartCards>0 ? shownCards.count-numberOfStartCards : 0
+        shownCards.count-numberOfStartCards>0 ? ( shownCards.count-numberOfStartCards>=extraCardsShownForMaxPenalty
+            ? extraCardsShownForMaxPenalty : //Return extraCardsShownForMaxPenalty if more than 18 extra are cards shown
+                                                    shownCards.count-numberOfStartCards) //Return the extra shown cards
+            : 0 //Return this if no extra cards are showed
     }
     
     
@@ -117,7 +120,6 @@ struct SetGame {
             addToScore += addToScore*(streak/10.0)
         }
 
-        
         streak+=(streak<maxStreak ? 1 : 0)
         score+=Int(addToScore)
         print("FINAL ADDTOSCORE: \(addToScore)")

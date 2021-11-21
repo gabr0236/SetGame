@@ -13,10 +13,10 @@ struct SetGameView: View {
     var body: some View {
         VStack{
             HStack(alignment: .bottom){
-                Text(game.isStreak() ? "️‍🔥Score: \(game.score())🔥" : "Score: \(game.score())")
+                Text(game.isStreak() ? "️‍🔥Score: \(game.score())🔥" : "Score: \(game.score())") //TODO: Red text if score is negative, green if positive
                     .font(.largeTitle)
                     .foregroundColor(game.isStreak() ? .green : .primary)
-            }
+            }.padding(10)
             AspectVGrid(items: game.cards, aspectRatio: 2/3) { card in
                 CardView(card: card)
                     .padding(4)
@@ -30,14 +30,14 @@ struct SetGameView: View {
                     game.hint()
                 }.frame(maxWidth: .infinity)
                 .disabled(!game.isHintAvailible())
-                Button("Add Three Cards"){
+                Button("Add Three"){
                     game.showThreeMoreCardsFromDeck()
                 }.disabled(!game.isMoreThanThreeCardsInDeck())
                 .frame(maxWidth: .infinity)
                 Button("New Game"){
                     game.newGame()
                 }.frame(maxWidth: .infinity)
-            }
+            }.padding(10)
         }
     }
 }
