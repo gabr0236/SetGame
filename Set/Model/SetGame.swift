@@ -101,22 +101,18 @@ struct SetGame {
         //---- Add Time Bonus 1000*(1-(TimeSpent/40)) ----//
         let timeBonusPercent = Double(timeSpent)/Double(timeSpentBonusLimit)
         addToScore += timeBonusPercent==0 ? 0 : Double(maxBonusPoints*(1.0-timeBonusPercent))
-        print("TIMEBONUSPERCENT: \(addToScore)")
 
         //---- Add Extra Cards Shown Penalty ----//
         if extraCardsShown != 0 {
         addToScore += (-maxPenaltyForMoreCardsShown/Double(extraCardsShownForMaxPenalty))*Double(extraCardsShown)
-        print("EXTRA CARDS SHOWN PENALTY: \((-maxPenaltyForMoreCardsShown/Double(extraCardsShownForMaxPenalty))*Double(extraCardsShown))")
         }
 
         //---- Add Standard Points ----//
         addToScore += pointsPerCorrect
-        print("POINTS PR CORRECT: \(pointsPerCorrect)")
 
 
         //---- Add Streak Multiplier ----//
         if (streak != 0) {
-            print("STREAK MULTIPLIER: \(addToScore*(1.0+streak/10.0))")
             addToScore += addToScore*(streak/10.0)
         }
 

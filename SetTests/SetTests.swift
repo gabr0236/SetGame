@@ -221,7 +221,6 @@ class SetTests: XCTestCase {
         
         print("SCORE CASE 5: \(sut.score)")
         XCTAssert(sut.score==3710, "Case 5 failed")
-        
     }
     
     //func testPerformanceExample() throws {
