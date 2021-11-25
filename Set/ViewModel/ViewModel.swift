@@ -50,4 +50,12 @@ class ViewModel: ObservableObject {
     func hint() {
         model.hint()
     }
+    
+    func deck() -> Array<SetCard> {
+        model.deckOfCards
+    }
+    
+    func descardPile() -> Array<SetCard> {
+        model.discardedCards
+    }
 }

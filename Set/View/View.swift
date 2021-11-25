@@ -10,8 +10,10 @@ import SwiftUI
 struct SetGameView: View {
     @StateObject var game: ViewModel
     
+    @State var dealt = Set<Int>()
+    
     var body: some View {
-        VStack{
+        VStack {
             HStack(alignment: .bottom){
                 Text(game.isStreak() ? "️‍🔥Score: \(game.score())🔥" : "Score: \(game.score())") //TODO: Red text if score is negative, green if positive
                     .font(.largeTitle)
@@ -23,7 +25,7 @@ struct SetGameView: View {
                     .onTapGesture {
                         game.choose(card)
                     }
-            }.foregroundColor(.blue)
+            }.foregroundColor(CardConstants.color)
             .padding(.horizontal)
             HStack{
                 Button("Show Hint"){
@@ -34,11 +36,49 @@ struct SetGameView: View {
                     game.showThreeMoreCardsFromDeck()
                 }.disabled(!game.isMoreThanThreeCardsInDeck())
                 .frame(maxWidth: .infinity)
+                deckBody
+                discardPileBody
                 Button("New Game"){
                     game.newGame()
                 }.frame(maxWidth: .infinity)
             }.padding(10)
         }
+    }
+    
+    private func deal(_ card: SetCard) {
+        dealt.insert(card.id)
+    }
+    
+    private func isUndealt(_ card: SetCard) -> Bool {
+        !dealt.contains(card.id)
+    }
+    
+    var deckBody: some View {
+        ZStack {
+            ForEach(game.deck()){ card in
+                CardView(card: card)
+            }
+        }
+        .frame(width: CardConstants.undealtWidth, height: CardConstants.undealtHeight)
+        .foregroundColor(CardConstants.color)
+    }
+    
+    var discardPileBody: some View {
+        ZStack {
+            ForEach(game.descardPile()) { card in
+                CardView(card: card)
+            }
+        }.frame(width: CardConstants.undealtWidth, height: CardConstants.undealtHeight)
+        .foregroundColor(CardConstants.color)
+    }
+    
+    private struct CardConstants {
+        static let color = Color.blue
+        static let aspectRatio: CGFloat = 2/3
+        static let dealDuration: Double = 0.5
+        static let totalDealDuration: Double = 2
+        static let undealtHeight: CGFloat = 90
+        static let undealtWidth = undealtHeight * aspectRatio
     }
 }
 

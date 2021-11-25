@@ -10,6 +10,7 @@ import Foundation
 struct SetGame {
     private(set) var deckOfCards = [SetCard]()
     private(set) var shownCards = [SetCard]()
+    private(set) var discardedCards = [SetCard]()
     var score = 0
     let numberOfCardsToMatch = 3
     let numberOfStartCards = 12
@@ -124,6 +125,12 @@ struct SetGame {
     mutating func changeCards(){
         guard matchedIndices.count == numberOfCardsToMatch else { return }
         let replaceIndices = matchedIndices
+        
+        //Add to discard pile
+        for index in replaceIndices {
+            discardedCards.append(shownCards[index])
+        }
+        
         if deckOfCards.count>=numberOfCardsToMatch && shownCards.count==numberOfStartCards {
             //Replace
             for index in replaceIndices {
@@ -131,6 +138,7 @@ struct SetGame {
                 shownCards.insert(deckOfCards.remove(at: 0), at: index)
             }
         } else {
+            
             //Remove
             shownCards = shownCards.enumerated()
                 .filter { !replaceIndices.contains($0.offset) }
