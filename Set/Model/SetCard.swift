@@ -19,6 +19,13 @@ struct SetCard: Identifiable, Equatable {
     var isFaceDown = true
     var isHint = false
     let id: Int
+    
+   mutating func setDefaultValues() {
+        isMatched = false
+        isSelected = false
+        isWrongGuess = false
+        isHint = false
+    }
 }
 enum Variant: Int, CaseIterable {
     case one=1, two, three

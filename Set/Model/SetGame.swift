@@ -127,12 +127,14 @@ struct SetGame {
         
         //Add to discard pile
         for index in replaceIndices {
+            shownCards[index].setDefaultValues()
             discardedCards.append(shownCards[index])
         }
         
         if deckOfCards.count>=numberOfCardsToMatch && shownCards.count==numberOfStartCards {
             //Replace
             for index in replaceIndices {
+                deckOfCards[0].isFaceDown = false
                 shownCards.remove(at: index)
                 shownCards.insert(deckOfCards.remove(at: 0), at: index)
             }
