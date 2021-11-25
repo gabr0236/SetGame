@@ -32,10 +32,6 @@ struct SetGameView: View {
                     game.hint()
                 }.frame(maxWidth: .infinity)
                 .disabled(!game.isHintAvailible())
-                Button("Add Three"){
-                    game.showThreeMoreCardsFromDeck()
-                }.disabled(!game.isMoreThanThreeCardsInDeck())
-                .frame(maxWidth: .infinity)
                 deckBody
                 discardPileBody
                 Button("New Game"){
@@ -61,6 +57,9 @@ struct SetGameView: View {
         }
         .frame(width: CardConstants.undealtWidth, height: CardConstants.undealtHeight)
         .foregroundColor(CardConstants.color)
+        .onTapGesture {
+            game.showThreeMoreCardsFromDeck()
+        }
     }
     
     var discardPileBody: some View {
