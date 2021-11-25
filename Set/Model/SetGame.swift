@@ -64,7 +64,6 @@ struct SetGame {
             
             shownCards[chosenIndex].isSelected.toggle()
             
-            
             let potentialMatchingCards = shownCards.filter({$0.isSelected == true})
             
             // ---- If 3 cards is now selected ---- //
@@ -189,15 +188,18 @@ struct SetGame {
     
     mutating func showStartingCards() {
         for _ in 1...numberOfStartCards {
-            shownCards.append(deckOfCards.removeFirst())
+            deckOfCards[0].isFaceDown = false
+            shownCards.append(deckOfCards.remove(at: 0))
         }
     }
     
     mutating func showThreeMoreCardsFromDeck()  {
         if deckOfCards.count >= 3 {
+            
             if matchedIndices.count==3 {
                 //---- Replace if 3 cards is already matched ----//
                 for index in matchedIndices {
+                    deckOfCards[0].isFaceDown = false
                     shownCards.remove(at: index)
                     shownCards.insert(deckOfCards.remove(at: 0), at: index)
                 }
@@ -206,6 +208,7 @@ struct SetGame {
                 if indexesOfAllMatches.count>0 {  }
                 //---- Add Three Cards ----//
                 for _ in 0...2 {
+                    deckOfCards[0].isFaceDown = false
                     shownCards.append(deckOfCards.remove(at: 0))
                 }
             }

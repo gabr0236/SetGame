@@ -72,6 +72,7 @@ struct SetGameView: View {
         .foregroundColor(CardConstants.color)
     }
     
+    
     private struct CardConstants {
         static let color = Color.blue
         static let aspectRatio: CGFloat = 2/3

@@ -13,20 +13,28 @@ struct CardView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            ZStack{
-                let shape = RoundedRectangle(cornerRadius: 10)
-                shape.fill().foregroundColor(card.isHint ? .yellow.opacity(0.3) : .white)
-                shape.strokeBorder(lineWidth: 4).foregroundColor(card.isMatched ? .green : (card.isWrongGuess ? .red : (card.isSelected ? .purple : .blue)))
-                VStack {
-                    Spacer(minLength: 0)
-                    ForEach(0..<card.numberOfShapes.rawValue, id: \.self) { index in
-                        cardShape().frame(height: geometry.size.height/6)
+            Group{
+                if !card.isFaceDown {
+                    ZStack{
+                        let shape = RoundedRectangle(cornerRadius: 10)
+                        shape.fill().foregroundColor(card.isHint ? .yellow.opacity(0.3) : .white)
+                        shape.strokeBorder(lineWidth: 4).foregroundColor(card.isMatched ? .green : (card.isWrongGuess ? .red : (card.isSelected ? .purple : .blue)))
+                        VStack {
+                            Spacer(minLength: 0)
+                            ForEach(0..<card.numberOfShapes.rawValue, id: \.self) { index in
+                                cardShape().frame(height: geometry.size.height/6)
+                            }
+                            Spacer(minLength: 0)
+                        }.padding()
+                        .foregroundColor(setColor())
+                        .aspectRatio(CGFloat(6.0/8.0), contentMode: .fit)
+                        .frame(width: geometry.size.width, height: geometry.size.height)
                     }
-                    Spacer(minLength: 0)
-                }.padding()
-                .foregroundColor(setColor())
-                .aspectRatio(CGFloat(6.0/8.0), contentMode: .fit)
-                .frame(width: geometry.size.width, height: geometry.size.height)
+                }
+                else {
+                    let shape = RoundedRectangle(cornerRadius: 10)
+                    shape.fill().foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                }
             }
         }
     }
@@ -48,7 +56,6 @@ struct CardView: View {
     }
     
     @ViewBuilder private func shapeFill<setShape>(shape: setShape) -> some View
-    //TODO: se løsning, brug rawvalues for cleanness
     where setShape: Shape {
         switch card.fill {
         case .one:       shape.fillAndBorder()
@@ -77,7 +84,7 @@ struct CardView: View {
 
 struct SetCardView_Previews: PreviewProvider {
     static var previews: some View {
-        let card = SetCard(shape: .one, color: .two, fill: .two, numberOfShapes: .two, isSelected: true, id: 1)
+        let card = SetCard(shape: .one, color: .two, fill: .two, numberOfShapes: .two, isSelected: true, isFaceDown: true, id: 1)
         CardView(card: card)
             .overlay(
                 RoundedRectangle( cornerRadius: 10)

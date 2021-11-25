@@ -16,6 +16,7 @@ struct SetCard: Identifiable, Equatable {
     var isMatched = false
     var isSelected = false
     var isWrongGuess = false
+    var isFaceDown = true
     var isHint = false
     let id: Int
 }
