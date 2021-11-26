@@ -195,7 +195,7 @@ struct SetGame {
         }
     }
     
-    mutating func showThreeMoreCardsFromDeck()  {
+    mutating func showThreeMoreCardsFromDeck(){
         if deckOfCards.count >= 3 {
             if matchedIndices.count==3 {
                 //---- Replace if 3 cards is already matched ----//

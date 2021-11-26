@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SetGameView: View {
     @StateObject var game: ViewModel
+    @Namespace private var dealingNamespace
     
     @State var dealt = Set<Int>()
     
@@ -21,6 +22,8 @@ struct SetGameView: View {
             }.padding(10)
             AspectVGrid(items: game.cards, aspectRatio: 2/3) { card in
                 CardView(card: card)
+                    .matchedGeometryEffect(id: card.id, in: dealingNamespace)
+                    .transition(.asymmetric(insertion: .identity, removal: .opacity))
                     .padding(4)
                     .onTapGesture {
                         game.choose(card)
@@ -53,12 +56,14 @@ struct SetGameView: View {
         ZStack {
             ForEach(game.deck()){ card in
                 CardView(card: card)
+                    .matchedGeometryEffect(id: card.id, in: dealingNamespace)
+                    .transition(.asymmetric(insertion: .identity, removal: .identity))
             }
         }
         .frame(width: CardConstants.undealtWidth, height: CardConstants.undealtHeight)
         .foregroundColor(CardConstants.color)
         .onTapGesture {
-            withAnimation(.easeInOut(duration: 3)){
+            withAnimation(.easeIn(duration: 3)){
                 game.showThreeMoreCardsFromDeck()
             }
         }

@@ -23,7 +23,7 @@ class ViewModel: ObservableObject {
         model.choose(card)
     }
     
-    func showThreeMoreCardsFromDeck() {
+    func showThreeMoreCardsFromDeck(){
         model.showThreeMoreCardsFromDeck()
     }
     
@@ -57,5 +57,9 @@ class ViewModel: ObservableObject {
     
     func descardPile() -> Array<SetCard> {
         model.discardedCards
+    }
+    
+    func topCardsInDeck() -> Array<SetCard> {
+        Array(model.deckOfCards[0...2])
     }
 }
