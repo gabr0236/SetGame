@@ -11,16 +11,18 @@ struct SetGameView: View {
     @StateObject var game: ViewModel
     @Namespace private var dealingNamespace
     
-    @State var dealt = Set<Int>()
     
     var body: some View {
         VStack {
+            // --------- Top Of Screen -------- //
             HStack(alignment: .bottom){
-                Text(game.isStreak() ? "️‍🔥Score: \(game.score())🔥" : "Score: \(game.score())") //TODO: Red text if score is negative, green if positive
+                Text(game.isStreak() ? "️‍🔥Score: \(game.score())🔥" : "Score: \(game.score())").animation(.none) //TODO: Red text if score is negative, green if positive
                     .font(.largeTitle)
                     .foregroundColor(game.isStreak() ? .green : .primary)
             }.padding(10)
-           gameBody
+            
+            // ------------ Cards ------------- //
+            gameBody
             
             // ------- Bottom Of Screen ------- //
             HStack{
@@ -33,16 +35,8 @@ struct SetGameView: View {
                 Button("New Game"){
                     game.newGame()
                 }.frame(maxWidth: .infinity)
-            }.padding(10)
+            }.padding(6)
         }
-    }
-    
-    private func deal(_ card: SetCard) {
-        dealt.insert(card.id)
-    }
-    
-    private func isUndealt(_ card: SetCard) -> Bool {
-        !dealt.contains(card.id)
     }
     
     var gameBody: some View {
@@ -51,6 +45,7 @@ struct SetGameView: View {
                 .matchedGeometryEffect(id: card.id, in: dealingNamespace)
                 .transition(.asymmetric(insertion: .identity, removal: .opacity))
                 .padding(4)
+                .zIndex(zIndex(of: card))
                 .onTapGesture {
                     withAnimation(.spring()){
                     game.choose(card)
@@ -66,6 +61,7 @@ struct SetGameView: View {
                 CardView(card: card)
                     .matchedGeometryEffect(id: card.id, in: dealingNamespace)
                     .transition(.asymmetric(insertion: .identity, removal: .identity))
+                    .zIndex(zIndex(of: card))
             }
         }
         .frame(width: CardConstants.undealtWidth, height: CardConstants.undealtHeight)
@@ -75,6 +71,10 @@ struct SetGameView: View {
                 game.showCards()
             }
         }
+    }
+    
+    private func zIndex(of card: SetCard) -> Double {
+        -Double(game.cards.firstIndex(where: { $0.id == card.id }) ?? 0)
     }
     
     var discardPileBody: some View {
@@ -97,6 +97,10 @@ struct SetGameView: View {
         static let undealtWidth = undealtHeight * aspectRatio
     }
 }
+
+
+
+
 
 
 
