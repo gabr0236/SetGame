@@ -20,18 +20,7 @@ struct SetGameView: View {
                     .font(.largeTitle)
                     .foregroundColor(game.isStreak() ? .green : .primary)
             }.padding(10)
-            AspectVGrid(items: game.cards, aspectRatio: 2/3) { card in
-                CardView(card: card)
-                    .matchedGeometryEffect(id: card.id, in: dealingNamespace)
-                    .transition(.asymmetric(insertion: .identity, removal: .opacity))
-                    .padding(4)
-                    .onTapGesture {
-                        withAnimation(.spring()){
-                        game.choose(card)
-                        }
-                    }
-            }.foregroundColor(CardConstants.color)
-            .padding(.horizontal)
+           gameBody
             
             // ------- Bottom Of Screen ------- //
             HStack{
@@ -56,6 +45,21 @@ struct SetGameView: View {
         !dealt.contains(card.id)
     }
     
+    var gameBody: some View {
+        AspectVGrid(items: game.cards, aspectRatio: 2/3) { card in
+            CardView(card: card)
+                .matchedGeometryEffect(id: card.id, in: dealingNamespace)
+                .transition(.asymmetric(insertion: .identity, removal: .opacity))
+                .padding(4)
+                .onTapGesture {
+                    withAnimation(.spring()){
+                    game.choose(card)
+                    }
+                }
+        }.foregroundColor(CardConstants.color)
+        .padding(.horizontal)
+    }
+    
     var deckBody: some View {
         ZStack {
             ForEach(game.deck()){ card in
@@ -68,7 +72,7 @@ struct SetGameView: View {
         .foregroundColor(CardConstants.color)
         .onTapGesture {
             withAnimation(.spring()){
-                game.showThreeMoreCardsFromDeck()
+                game.showCards()
             }
         }
     }

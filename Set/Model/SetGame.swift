@@ -151,7 +151,6 @@ struct SetGame {
         deckOfCards = Array<SetCard>()
         createCards()
         deckOfCards.shuffle()
-        showStartingCards()
         gameTimer.start()
     }
     
@@ -192,6 +191,14 @@ struct SetGame {
         for _ in 1...numberOfStartCards {
             deckOfCards[0].isFaceDown = false
             shownCards.append(deckOfCards.remove(at: 0))
+        }
+    }
+    
+    mutating func showCards() {
+        if shownCards.isEmpty {
+            showStartingCards()
+        } else {
+            showThreeMoreCardsFromDeck()
         }
     }
     

@@ -23,8 +23,8 @@ class ViewModel: ObservableObject {
         model.choose(card)
     }
     
-    func showThreeMoreCardsFromDeck(){
-        model.showThreeMoreCardsFromDeck()
+    func showCards(){
+        model.showCards()
     }
     
     func score() -> Int {
