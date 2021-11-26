@@ -30,6 +30,8 @@ struct SetGameView: View {
                     }
             }.foregroundColor(CardConstants.color)
             .padding(.horizontal)
+            
+            // ------- Bottom Of Screen ------- //
             HStack{
                 Button("Show Hint"){
                     game.hint()
@@ -63,7 +65,7 @@ struct SetGameView: View {
         .frame(width: CardConstants.undealtWidth, height: CardConstants.undealtHeight)
         .foregroundColor(CardConstants.color)
         .onTapGesture {
-            withAnimation(.easeIn(duration: 3)){
+            withAnimation(.spring()){
                 game.showThreeMoreCardsFromDeck()
             }
         }
@@ -73,6 +75,7 @@ struct SetGameView: View {
         ZStack {
             ForEach(game.descardPile()) { card in
                 CardView(card: card)
+                    .matchedGeometryEffect(id: card.id, in: dealingNamespace)
             }
         }.frame(width: CardConstants.undealtWidth, height: CardConstants.undealtHeight)
         .foregroundColor(CardConstants.color)

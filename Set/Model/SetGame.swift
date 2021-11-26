@@ -201,7 +201,8 @@ struct SetGame {
                 //---- Replace if 3 cards is already matched ----//
                 for index in matchedIndices {
                     deckOfCards[0].isFaceDown = false
-                    shownCards.remove(at: index)
+                    shownCards[index].setDefaultValues()
+                    discardedCards.append(shownCards.remove(at: index))
                     shownCards.insert(deckOfCards.remove(at: 0), at: index)
                 }
             } else {
