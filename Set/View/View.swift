@@ -58,7 +58,9 @@ struct SetGameView: View {
         .frame(width: CardConstants.undealtWidth, height: CardConstants.undealtHeight)
         .foregroundColor(CardConstants.color)
         .onTapGesture {
-            game.showThreeMoreCardsFromDeck()
+            withAnimation(.easeInOut(duration: 3)){
+                game.showThreeMoreCardsFromDeck()
+            }
         }
     }
     

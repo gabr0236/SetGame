@@ -104,7 +104,7 @@ struct SetGame {
 
         //---- Add Extra Cards Shown Penalty ----//
         if extraCardsShown != 0 {
-        addToScore += (-maxPenaltyForMoreCardsShown/Double(extraCardsShownForMaxPenalty))*Double(extraCardsShown)
+        addToScore += -(maxPenaltyForMoreCardsShown/Double(extraCardsShownForMaxPenalty))*Double(extraCardsShown)
         }
 
         //---- Add Standard Points ----//
@@ -197,7 +197,6 @@ struct SetGame {
     
     mutating func showThreeMoreCardsFromDeck()  {
         if deckOfCards.count >= 3 {
-            
             if matchedIndices.count==3 {
                 //---- Replace if 3 cards is already matched ----//
                 for index in matchedIndices {
