@@ -26,7 +26,9 @@ struct SetGameView: View {
                     .transition(.asymmetric(insertion: .identity, removal: .opacity))
                     .padding(4)
                     .onTapGesture {
+                        withAnimation(.spring()){
                         game.choose(card)
+                        }
                     }
             }.foregroundColor(CardConstants.color)
             .padding(.horizontal)
