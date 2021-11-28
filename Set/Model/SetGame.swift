@@ -13,7 +13,7 @@ struct SetGame {
     private(set) var discardedCards = [SetCard]()
     var score = 0
     let numberOfCardsToMatch = 3
-    let numberOfStartCards = 12
+    static let numberOfStartCards = 12
     var hintsUsed = 0
     let maxHints = 10
     let gameTimer = GameTimer()
@@ -29,9 +29,9 @@ struct SetGame {
 
 
     var extraCardsShown: Int {
-        shownCards.count-numberOfStartCards>0 ? ( shownCards.count-numberOfStartCards>=extraCardsShownForMaxPenalty
+        shownCards.count-SetGame.numberOfStartCards>0 ? ( shownCards.count-SetGame.numberOfStartCards>=extraCardsShownForMaxPenalty
             ? extraCardsShownForMaxPenalty : //Return extraCardsShownForMaxPenalty if more than 18 extra are cards shown
-                                                    shownCards.count-numberOfStartCards) //Return the extra shown cards
+                                                            shownCards.count-SetGame.numberOfStartCards) //Return the extra shown cards
             : 0 //Return this if no extra cards are showed
     }
     
@@ -131,7 +131,7 @@ struct SetGame {
             discardedCards.append(shownCards[index])
         }
         
-        if deckOfCards.count>=numberOfCardsToMatch && shownCards.count==numberOfStartCards {
+        if deckOfCards.count>=numberOfCardsToMatch && shownCards.count==SetGame.numberOfStartCards {
             //Replace
             for index in replaceIndices {
                 deckOfCards[0].isFaceDown = false
@@ -188,7 +188,7 @@ struct SetGame {
     
     
     mutating func showStartingCards() {
-        for _ in 1...numberOfStartCards {
+        for _ in 1...SetGame.numberOfStartCards {
             deckOfCards[0].isFaceDown = false
             shownCards.append(deckOfCards.remove(at: 0))
         }
