@@ -34,6 +34,7 @@ struct CardView: View {
                 else {
                     let shape = RoundedRectangle(cornerRadius: 10)
                     shape.fill().foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                        .padding(0)
                 }
             }
         }

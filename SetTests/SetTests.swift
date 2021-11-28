@@ -16,6 +16,7 @@ class SetTests: XCTestCase {
     override func setUpWithError() throws {
         try super.setUpWithError()
         sut = SetGame()
+        sut.showCards()
     }
     
     override func tearDownWithError() throws {

@@ -10,11 +10,9 @@ import SwiftUI
 struct SetGameView: View {
     @StateObject var game: ViewModel
     @Namespace private var dealingNamespace
-    @State var shouldDelay = true
-    
     
     var body: some View {
-        VStack {
+    
             // --------- Top Of Screen -------- //
             HStack(alignment: .bottom){
                 Text(game.isStreak() ? "️‍🔥Score: \(game.score())🔥" : "Score: \(game.score())").animation(.none) //TODO: Red text if score is negative, green if positive
@@ -24,7 +22,7 @@ struct SetGameView: View {
             
             // ------------ Cards ------------- //
             gameBody
-            
+            Spacer()
             // ------- Bottom Of Screen ------- //
             HStack{
                 Button("Show Hint"){
@@ -36,11 +34,10 @@ struct SetGameView: View {
                 Button("New Game"){
                     game.newGame()
                 }.frame(maxWidth: .infinity)
-            }.padding(6)
-        }
+            }.padding()
     }
     
-    let cardTransitionDelay = 0.2
+    let cardTransitionDelay = 0.1
     private func dealDelay(card: SetCard) -> Double {
         let indexOfCard = (game.cards.firstIndex(where: { $0.id == card.id }) ?? 0)
         if game.cards.count==SetGame.numberOfStartCards{
@@ -58,10 +55,9 @@ struct SetGameView: View {
             CardView(card: card)
                 .matchedGeometryEffect(id: card.id, in: dealingNamespace)
                 .transition(.asymmetric(insertion: .identity, removal: .opacity))
-                .animation(.easeInOut(duration: 0.3)
+                .animation(.easeInOut(duration: 0.4)
                             .delay(dealDelay(card: card)))
                 .padding(4)
-                .zIndex(zIndex(of: card))
                 .onTapGesture {
                     withAnimation(.spring()){
                         game.choose(card)
@@ -82,14 +78,11 @@ struct SetGameView: View {
         }
         .frame(width: CardConstants.undealtWidth, height: CardConstants.undealtHeight)
         .foregroundColor(CardConstants.color)
-        .padding(0)
         .onTapGesture {
             withAnimation(.spring()){
-                
                 game.showCards()
             }
         }
-        .zIndex(5)
     }
     
     private func zIndex(of card: SetCard) -> Double {
@@ -105,7 +98,6 @@ struct SetGameView: View {
         }.frame(width: CardConstants.undealtWidth, height: CardConstants.undealtHeight)
         .foregroundColor(CardConstants.color)
     }
-    
     
     private struct CardConstants {
         static let color = Color.blue

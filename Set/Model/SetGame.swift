@@ -100,10 +100,12 @@ struct SetGame {
 
         //---- Add Time Bonus 1000*(1-(TimeSpent/40)) ----//
         let timeBonusPercent = Double(timeSpent)/Double(timeSpentBonusLimit)
+        print("###### TIMEBONUS: \(timeBonusPercent==0 ? 0 : Double(maxBonusPoints*(1.0-timeBonusPercent)))")
         addToScore += timeBonusPercent==0 ? 0 : Double(maxBonusPoints*(1.0-timeBonusPercent))
 
         //---- Add Extra Cards Shown Penalty ----//
         if extraCardsShown != 0 {
+            print("###### EXTRASHOWNCARDSPENALTY: \(-(maxPenaltyForMoreCardsShown/Double(extraCardsShownForMaxPenalty))*Double(extraCardsShown))")
         addToScore += -(maxPenaltyForMoreCardsShown/Double(extraCardsShownForMaxPenalty))*Double(extraCardsShown)
         }
 
