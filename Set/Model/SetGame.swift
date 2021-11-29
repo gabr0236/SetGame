@@ -74,7 +74,7 @@ struct SetGame {
                     shownCards.indices.filter { shownCards[$0].isSelected == true }
                         .forEach { shownCards[$0].isMatched = true }
                    
-                    updateScoreCorrectGuess(timeSpent: gameTimer.secondsElapsed)
+                    updateScoreCorrectGuess(timeSpent: gameTimer.secondsElapsed<40 ? gameTimer.secondsElapsed : 40)
                     gameTimer.restart()
 
                     deHint()
