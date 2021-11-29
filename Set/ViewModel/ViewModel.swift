@@ -10,6 +10,11 @@ import SwiftUI
 class ViewModel: ObservableObject {
     @Published private var model: SetGame
     
+    private let maxCardsOnBoard = 33
+    
+    func isBoardFull() -> Bool {
+        cards.count <= maxCardsOnBoard ? false : true
+    }
     
     init() {
         model = SetGame()

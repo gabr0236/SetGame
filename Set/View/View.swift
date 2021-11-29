@@ -10,6 +10,7 @@ import SwiftUI
 struct SetGameView: View {
     @StateObject var game: ViewModel
     @Namespace private var dealingNamespace
+
     
     var body: some View {
     
@@ -22,7 +23,6 @@ struct SetGameView: View {
             
             // ------------ Cards ------------- //
             gameBody
-            Spacer()
             // ------- Bottom Of Screen ------- //
             HStack{
                 Button("Show Hint"){
@@ -82,7 +82,7 @@ struct SetGameView: View {
             withAnimation(.spring()){
                 game.showCards()
             }
-        }
+        }.disabled(game.isBoardFull())
     }
     
     private func zIndex(of card: SetCard) -> Double {
