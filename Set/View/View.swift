@@ -13,7 +13,6 @@ struct SetGameView: View {
 
     
     var body: some View {
-    
             // --------- Top Of Screen -------- //
             HStack(alignment: .bottom){
                 Text(game.isStreak() ? "️‍🔥Score: \(game.score())🔥" : "Score: \(game.score())").animation(.none) //TODO: Red text if score is negative, green if positive
@@ -54,12 +53,13 @@ struct SetGameView: View {
         AspectVGrid(items: game.cards, aspectRatio: 2/3) { card in
             CardView(card: card)
                 .matchedGeometryEffect(id: card.id, in: dealingNamespace)
-                .transition(.asymmetric(insertion: .identity, removal: .opacity))
-                .animation(.easeInOut(duration: 0.4)
+                .transition(.asymmetric(insertion: .identity, removal: .identity))
+                .animation(.easeInOut(duration: 0.3)
                             .delay(dealDelay(card: card)))
+                .zIndex(zIndex(of: card))
                 .padding(4)
                 .onTapGesture {
-                    withAnimation(.spring()){
+                    withAnimation(.spring()){ //todo: diffrent animation
                         game.choose(card)
                     }
                 }
@@ -89,11 +89,13 @@ struct SetGameView: View {
         -Double(game.cards.firstIndex(where: { $0.id == card.id }) ?? 0)
     }
     
+    
     var discardPileBody: some View {
         ZStack {
             ForEach(game.descardPile()) { card in
                 CardView(card: card)
                     .matchedGeometryEffect(id: card.id, in: dealingNamespace)
+                    .transition(.asymmetric(insertion: .identity, removal: .identity))
             }
         }.frame(width: CardConstants.undealtWidth, height: CardConstants.undealtHeight)
         .foregroundColor(CardConstants.color)

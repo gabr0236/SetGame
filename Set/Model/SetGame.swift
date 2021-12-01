@@ -31,11 +31,9 @@ struct SetGame {
     var extraCardsShown: Int {
         shownCards.count-SetGame.numberOfStartCards>0 ? ( shownCards.count-SetGame.numberOfStartCards>=extraCardsShownForMaxPenalty
             ? extraCardsShownForMaxPenalty : //Return extraCardsShownForMaxPenalty if more than 18 extra are cards shown
-                                                            shownCards.count-SetGame.numberOfStartCards) //Return the extra shown cards
+            shownCards.count-SetGame.numberOfStartCards) //Return the extra shown cards
             : 0 //Return this if no extra cards are showed
     }
-    
-    
     
     var matchedIndices: [Int] {
         shownCards.indices.filter { shownCards[$0].isSelected && shownCards[$0].isMatched }
@@ -141,7 +139,6 @@ struct SetGame {
                 shownCards.insert(deckOfCards.remove(at: 0), at: index)
             }
         } else {
-            
             //Remove
             shownCards = shownCards.enumerated()
                 .filter { !replaceIndices.contains($0.offset) }
